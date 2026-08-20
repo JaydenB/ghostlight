@@ -200,13 +200,67 @@ as a compact flare look-development tool or a fuller optical workstation.
 |---|---:|---|
 | Python | 3.9 | Python 3.10–3.12 recommended |
 | CMake | 3.18 | Required to build the native extension |
-| CUDA Toolkit | 11.8 | CUDA 12.x preferred; requires a compatible NVIDIA driver |
+| CUDA Toolkit | 12.x | Tested on 13.2. **CUDA 11.x does not work** — see below. Requires a compatible NVIDIA driver |
 | C++ compiler | MSVC 2019 / GCC 9 | Newer supported toolchains are recommended |
 | NVIDIA GPU | Maxwell generation | A modern RTX GPU is recommended for interactive work |
 | PySide6 | 6.4 | Installed automatically with Designer |
 
 Ninja is optional, but usually makes local builds faster. MOV rendering also needs
 an `ffmpeg` executable on `PATH`; the other export formats do not.
+
+#### Choosing a CUDA toolkit
+
+With more than one toolkit installed, the one CMake picks is often not the
+`nvcc` first on your `PATH`.
+
+On Windows the build normally runs through the Visual Studio generator, which
+resolves CUDA through its MSBuild integration: it follows `CUDA_PATH` and
+ignores both `CMAKE_CUDA_COMPILER` and `CUDACXX`. A machine whose `CUDA_PATH`
+names one toolkit while `PATH` leads to another builds against the one
+`CUDA_PATH` names, silently. Select a toolkit explicitly instead:
+
+```powershell
+.\build.ps1 -CudaToolkit "12.6" -Install
+```
+
+If that version is not installed, the build fails rather than quietly falling
+back, but the message is indirect: MSBuild reports a missing
+`...<version>.props` import (`MSB4019`) rather than naming the toolkit.
+
+On Linux the Make and Ninja generators do honour the compiler, so the script
+sets `CUDACXX` for you:
+
+```bash
+bash build.sh --cuda-toolkit /usr/local/cuda-12.6 --install
+```
+
+Both scripts print the toolkit and the final `CMAKE_ARGS` before building, and
+both extend `CMAKE_ARGS` rather than replace it, so any CMake options you
+export yourself are passed through.
+
+The toolkit also caps the architectures you can target: Blackwell (`120`) needs
+CUDA 12.8 or newer, and Hopper (`90`) needs 11.8 or newer.
+
+#### Known-good CUDA versions
+
+This table records what has actually been exercised, not what is expected to
+work:
+
+| Toolkit | Status |
+|---|---|
+| 13.2 | **Tested.** Full test suite and the `validation/` golden gate pass. |
+| 12.x | Untested. |
+| 11.8 | **Known broken.** Compiles, but see below. |
+
+An 11.8 build fails two ways. `cudaCreateTextureObject` is rejected with
+`invalid argument` when uploading image-aperture textures, so any lens using an
+`APERTURE_IMAGE` stop errors at render time. Separately, its numerical output
+diverges from the committed goldens by far more than the usual atomic-ordering
+noise — up to roughly 1900 ppm, where the normal floor is under 1 ppm — and
+even the starburst passes, which contain no atomics and are otherwise
+bit-exact, shift. The goldens under `validation/goldens/` are therefore tied to
+the toolkit that produced them; regenerating them on a different major CUDA
+version is expected to move them.
 
 ### Windows
 
@@ -222,14 +276,18 @@ cd ghostlight\bindings\python
 cd ..\..\..
 
 # Install the viewport and desktop application.
-python -m pip install -e .\ghostlight_viewport
-python -m pip install -e .\ghostlight_designer
+python -m pip install .\ghostlight_viewport
+python -m pip install .\ghostlight_designer
 
 ghostlight-designer
 ```
 
 To target only the GPU in your workstation and shorten compilation, pass its
 CUDA compute capability—for example `-CudaArchitectures "89"` for an RTX 4090.
+
+The default architecture list covers Maxwell through Hopper (`50`–`90`).
+Blackwell (`120`) is not included because it needs CUDA 12.8 or newer; on a
+recent toolkit add it with `-CudaArchitectures "120"`.
 
 ### Linux
 
@@ -241,8 +299,8 @@ cd ghostlight/bindings/python
 bash build.sh --install
 cd ../../..
 
-python -m pip install -e ./ghostlight_viewport
-python -m pip install -e ./ghostlight_designer
+python -m pip install ./ghostlight_viewport
+python -m pip install ./ghostlight_designer
 
 ghostlight-designer
 ```
@@ -261,6 +319,13 @@ python -m pip install pybind11
 
 It builds `_ghostlight`, copies the extension into the Python source package,
 and performs an import smoke test.
+
+For an editable install (`python -m pip install -e .\ghostlight_designer`),
+run `ghostlight-designer` and `pytest` from a directory other than the
+repository root. The root holds folders named `ghostlight`,
+`ghostlight_viewport`, and `ghostlight_designer`, and Python resolves those
+ahead of an editable install, importing them as empty namespace packages.
+The non-editable install used above is unaffected.
 
 ## Python quick start
 
@@ -285,7 +350,13 @@ result = system.render_point_flare(1920, 1080, config)
 
 # Each channel is a scene-linear float32 NumPy array.
 ghost_rgb = ghostlight._arrays.ghost_to_hwc(result)
+print(ghost_rgb.shape, ghost_rgb.dtype, ghost_rgb.max())
 ```
+
+Ghost values are scene-linear and unexposed, so that maximum is typically a
+small fraction of 1.0 — the render is correct even though it looks black if you
+write it straight to an 8-bit image. Apply an exposure and a view transform
+before display; Designer's render panels use the ACES 2.0 view transform.
 
 Extended sources use weighted angular samples:
 
@@ -305,12 +376,22 @@ file is self-contained: it can carry its glass data, optical elements, surface
 geometry, coating and aperture modifiers, stable IDs, and a pivot rig for moving
 groups of elements.
 
-The repository ships sixteen prescriptions and studies — spherical primes,
+The repository ships fifteen prescriptions and studies — spherical primes,
 anamorphic systems built on cylindrical surfaces, and a pair of experimental
 designs. See the [lens-format and library guide](lenses/README.md) for the
 schema, coordinate conventions, worked examples, and Python round-trip API.
 
 ## Testing and validation
+
+The suites need `pytest`, plus `PyYAML` for one designer test. Each package
+declares its test dependencies under a `dev` extra:
+
+```powershell
+python -m pip install ".\ghostlight\bindings\python[dev]" `
+    ".\ghostlight_viewport[dev]" ".\ghostlight_designer[dev]"
+```
+
+The extras also pull in `matplotlib`, which the `validation/` scripts import.
 
 Run the Python suites from the repository root:
 

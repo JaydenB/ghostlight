@@ -18,7 +18,10 @@ pytest.importorskip("PySide6", reason="PySide6 not installed; viewport tests ski
 
 _HERE = pathlib.Path(__file__).resolve().parent
 _ROOT = _HERE.parent.parent
-sys.path.insert(0, str(_ROOT / "ghostlight" / "bindings" / "python"))
+# The compiled `ghostlight` extension is resolved by conftest.py, which only
+# prepends the in-tree bindings package when it actually holds a built
+# extension. Repeating that insert here unconditionally would shadow an
+# installed ghostlight-optics wheel with a stub source package.
 sys.path.insert(0, str(_ROOT / "ghostlight_viewport"))
 
 from _helpers import example_doublet_path

@@ -28,7 +28,7 @@ def test_sag_matches_reference_on_sphere():
                 want = reference_asphere_sag(float(r), R, K, [])
                 if want > 1e29:
                     continue
-                got = float(geometry.sag(np.array([r]), R, K, np.array([])))
+                got = float(geometry.sag(np.array([r]), R, K, np.array([]))[0])
                 assert math.isclose(got, want, rel_tol=1e-6, abs_tol=1e-6), (
                     f"R={R} K={K} r={r}: want {want} got {got}"
                 )
@@ -48,7 +48,7 @@ def test_sag_matches_reference_on_asphere():
             want = reference_asphere_sag(float(r), R, K, terms)
             if want > 1e29:
                 continue
-            got = float(geometry.sag(np.array([r]), R, K, np.array(terms)))
+            got = float(geometry.sag(np.array([r]), R, K, np.array(terms))[0])
             assert math.isclose(got, want, rel_tol=1e-6, abs_tol=1e-6), (
                 f"R={R} K={K} terms={terms} r={r}: want {want} got {got}"
             )
@@ -60,7 +60,7 @@ def test_flat_surface_emits_only_asphere_terms():
     terms = [1e-4, 0.0, 1e-6, 0.0]
     for r in np.linspace(0.0, 5.0, 10):
         want = reference_asphere_sag(float(r), 0.0, 0.0, terms)
-        got = float(geometry.sag(np.array([r]), 0.0, 0.0, np.array(terms)))
+        got = float(geometry.sag(np.array([r]), 0.0, 0.0, np.array(terms))[0])
         assert math.isclose(got, want, rel_tol=1e-6, abs_tol=1e-9)
 
 

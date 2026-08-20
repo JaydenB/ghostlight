@@ -3,12 +3,22 @@
 import pathlib
 import sys
 
+
 # The built extension lives in this package directory.  Inserting it lets the
 # suite run from any working directory: from the repository root, `ghostlight`
 # would otherwise resolve to the C++ source directory of the same name, which
 # has no __init__.py and imports as an empty namespace package.
+#
+# Only do so when that extension is actually present, though: after a plain
+# `build.ps1 -Install` the source package is a stub and inserting it would
+# shadow the installed wheel.
+def _has_built_extension(package_root):
+    pkg = package_root / "ghostlight"
+    return any(pkg.glob("_ghostlight*.pyd")) or any(pkg.glob("_ghostlight*.so"))
+
+
 _PACKAGE_ROOT = pathlib.Path(__file__).resolve().parents[1]
-if str(_PACKAGE_ROOT) not in sys.path:
+if _has_built_extension(_PACKAGE_ROOT) and str(_PACKAGE_ROOT) not in sys.path:
     sys.path.insert(0, str(_PACKAGE_ROOT))
 
 import pytest  # noqa: E402

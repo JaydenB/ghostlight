@@ -13,6 +13,10 @@ dependencies = [
     "ghostlight-optics",
 ]
 
+[project.optional-dependencies]
+# pytest runs the suite under tests/.
+dev = ["pytest>=7.0"]
+
 [project.urls]
 Homepage = "https://github.com/JaydenB/ghostlight"
 Issues = "https://github.com/JaydenB/ghostlight/issues"

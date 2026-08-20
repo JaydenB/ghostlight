@@ -10,6 +10,13 @@
     Semicolon-separated CUDA architecture list (e.g. "86;89").
     Defaults to the broad range defined in the root CMakeLists.txt.
 
+.PARAMETER CudaToolkit
+    CUDA toolkit version to build against, e.g. "11.8". Only meaningful with
+    the Visual Studio generator, which takes CUDA from its MSBuild toolset and
+    ignores CMAKE_CUDA_COMPILER/CUDACXX. Without this, CMake selects whatever
+    CUDA_PATH points at, which is not necessarily the nvcc first on PATH when
+    several toolkits are installed.
+
 .PARAMETER Jobs
     Parallel build jobs passed to cmake --build (default: logical CPU count).
 
@@ -17,10 +24,12 @@
     .\build.ps1
     .\build.ps1 -Install
     .\build.ps1 -CudaArchitectures "89" -Install
+    .\build.ps1 -CudaToolkit "11.8" -Install
 #>
 param(
     [switch]$Install,
     [string]$CudaArchitectures = "",
+    [string]$CudaToolkit = "",
     [int]$Jobs = [Environment]::ProcessorCount
 )
 
@@ -61,18 +70,32 @@ Write-Step "Installing build dependencies"
 if ($LASTEXITCODE -ne 0) { Abort "pip install of build dependencies failed" }
 
 # ---------------------------------------------------------------------------
-# Set optional CUDA architecture override
+# Set optional CUDA overrides
 # ---------------------------------------------------------------------------
+# Whatever the caller already placed in CMAKE_ARGS is preserved and extended,
+# so arbitrary CMake options stay reachable through this script.
 $cmakeArgs = @()
 if ($CudaArchitectures -ne "") {
     $cmakeArgs += "-DCMAKE_CUDA_ARCHITECTURES=$CudaArchitectures"
     Write-Host "  CUDA architectures: $CudaArchitectures"
 }
+if ($CudaToolkit -ne "") {
+    # A toolset spec, not -D: the Visual Studio generator resolves CUDA through
+    # its MSBuild integration and ignores CMAKE_CUDA_COMPILER entirely.
+    $cmakeArgs += "-T cuda=$CudaToolkit"
+    Write-Host "  CUDA toolkit: $CudaToolkit"
+}
 
 if ($cmakeArgs.Count -gt 0) {
-    $env:CMAKE_ARGS = $cmakeArgs -join " "
-} else {
-    Remove-Item Env:\CMAKE_ARGS -ErrorAction SilentlyContinue
+    $joined = $cmakeArgs -join " "
+    if ([string]::IsNullOrWhiteSpace($env:CMAKE_ARGS)) {
+        $env:CMAKE_ARGS = $joined
+    } else {
+        $env:CMAKE_ARGS = "$($env:CMAKE_ARGS) $joined"
+    }
+}
+if (-not [string]::IsNullOrWhiteSpace($env:CMAKE_ARGS)) {
+    Write-Host "  CMAKE_ARGS: $($env:CMAKE_ARGS)"
 }
 
 # ---------------------------------------------------------------------------
@@ -87,7 +110,7 @@ New-Item -ItemType Directory -Force -Path dist | Out-Null
 
 if ($LASTEXITCODE -ne 0) { Abort "pip wheel failed" }
 
-$wheel = Get-ChildItem dist\ghostlight-*.whl | Sort-Object LastWriteTime | Select-Object -Last 1
+$wheel = Get-ChildItem dist\ghostlight*.whl | Sort-Object LastWriteTime | Select-Object -Last 1
 if (-not $wheel) { Abort "No wheel found in dist\" }
 Write-Host "`nBuilt: $($wheel.Name)" -ForegroundColor Green
 

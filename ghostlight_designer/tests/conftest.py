@@ -10,7 +10,19 @@ pytest.importorskip("PySide6", reason="PySide6 not installed; designer tests ski
 
 _HERE = pathlib.Path(__file__).resolve().parent
 _ROOT = _HERE.parent.parent
-sys.path.insert(0, str(_ROOT / "ghostlight" / "bindings" / "python"))
+
+
+# Prefer an in-tree build when build_dev.ps1 has copied the compiled extension
+# into the source package. Without that extension the source package is a
+# stub, so inserting it unconditionally would shadow an installed
+# ghostlight-optics wheel and break `import ghostlight._ghostlight`.
+def _has_built_extension(package_root):
+    pkg = package_root / "ghostlight"
+    return any(pkg.glob("_ghostlight*.pyd")) or any(pkg.glob("_ghostlight*.so"))
+
+
+if _has_built_extension(_ROOT / "ghostlight" / "bindings" / "python"):
+    sys.path.insert(0, str(_ROOT / "ghostlight" / "bindings" / "python"))
 sys.path.insert(0, str(_ROOT / "ghostlight_designer"))
 sys.path.insert(0, str(_ROOT / "ghostlight_viewport"))
 

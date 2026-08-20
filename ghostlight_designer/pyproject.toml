@@ -19,6 +19,10 @@ dependencies = [
     # OpenColorIO powers the designer-wide ACES 2.0 display (view) transform in
     # the render panels. >=2.4 for the ACES 2.0 builtin OCIO configs.
     "opencolorio>=2.4",
+    # matplotlib backs the field-diagram, Seidel, and spot-diagram evaluation
+    # panels. main_window imports those panels at module scope, so a missing
+    # matplotlib prevents the application from starting at all.
+    "matplotlib>=3.7",
     # Animation export (source-flare Render dropdown): Pillow writes GIF / JPEG
     # sequences; OpenEXR writes scene-linear EXR sequences. MOV export shells out
     # to an ffmpeg binary detected on PATH at runtime (no Python dep), and both
@@ -26,6 +30,12 @@ dependencies = [
     "Pillow>=9.1",
     "OpenEXR>=3.2",
 ]
+
+[project.optional-dependencies]
+# pytest runs the suite under tests/.
+# PyYAML is imported by tools/build_material_catalogue.py, which
+# tests/test_material_converter.py exercises.
+dev = ["pytest>=7.0", "pyyaml>=6.0"]
 
 [project.urls]
 Homepage = "https://github.com/JaydenB/ghostlight"

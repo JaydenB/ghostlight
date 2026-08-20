@@ -37,5 +37,14 @@ def lens_file(name: str) -> pathlib.Path:
     return LENSES / name
 
 
-if str(PKG_DIR) not in sys.path:
+def _has_built_extension(package_root):
+    """True when the in-tree package holds a compiled extension."""
+    pkg = package_root / "ghostlight"
+    return any(pkg.glob("_ghostlight*.pyd")) or any(pkg.glob("_ghostlight*.so"))
+
+
+# Prefer an in-tree build when build_dev.ps1 has copied the extension into the
+# source package. Without it that package is a stub, so inserting it here would
+# shadow an installed ghostlight-optics wheel and break the import below.
+if _has_built_extension(PKG_DIR) and str(PKG_DIR) not in sys.path:
     sys.path.insert(0, str(PKG_DIR))

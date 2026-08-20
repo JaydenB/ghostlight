@@ -9,10 +9,11 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # Link CUDART explicitly instead of inheriting CMake's static default.
 set(CMAKE_CUDA_RUNTIME_LIBRARY None)
 
-# Default arch list covers Maxwell through Blackwell.
+# Default arch list covers Maxwell through Hopper. Blackwell (120) is omitted
+# because it requires CUDA 12.8+; add it explicitly on a new enough toolkit.
 # Override: cmake -DCMAKE_CUDA_ARCHITECTURES="50;52;60;61;70;75;80;86;89;90" ..
 if(NOT CMAKE_CUDA_ARCHITECTURES)
-    set(CMAKE_CUDA_ARCHITECTURES 50 52 60 61 70 75 80 86 89 90 120)
+    set(CMAKE_CUDA_ARCHITECTURES 50 52 60 61 70 75 80 86 89 90)
 endif()
 
 if(MSVC)
