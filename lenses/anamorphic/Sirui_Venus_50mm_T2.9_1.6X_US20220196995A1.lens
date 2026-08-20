@@ -1,0 +1,910 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {
+    "name": "Sirui Venus 50mm T2.9 1.6x full-frame anamorphic \u2014 Venus blue-flare coating interpretation",
+    "description": "Table-1 reconstruction of the Sirui-family Full-frame anamorphic lens patent; clear apertures, final image distance, and coatings are reconstruction choices.",
+    "source": "US20220196995A1 / WO2022136964A1 / CN214225565U",
+    "focal_length_mm": 50.0,
+    "patent_title": "Full-frame anamorphic lens",
+    "patent_family": [
+      "US20220196995A1",
+      "WO2022136964A1",
+      "CN214225565U"
+    ],
+    "patent_nominal_aperture": "f/2.8",
+    "product_nominal_transmission": "T2.9",
+    "product_squeeze": 1.6,
+    "published_prescription": "15 elements / 12 optical groups",
+    "published_product_spec": "16 elements / 13 groups",
+    "variant": "Venus blue-flare coating interpretation",
+    "coating_status": "interpretive; patent and product do not publish coating recipes",
+    "clear_aperture_status": "inferred; patent does not publish clear diameters"
+  },
+  "glass_catalogue": {
+    "PatentGlass_nd1p804_Vd46p59": {
+      "name": "Patent glass nd=1.804 Vd=46.59",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.804,
+        "Vd": 46.59
+      }
+    },
+    "PatentGlass_nd1p518_Vd52p00": {
+      "name": "Patent glass nd=1.518 Vd=52.00",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.518,
+        "Vd": 52.0
+      }
+    },
+    "PatentGlass_nd1p831_Vd28p53": {
+      "name": "Patent glass nd=1.831 Vd=28.53",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.831,
+        "Vd": 28.53
+      }
+    },
+    "PatentGlass_nd1p927_Vd24p32": {
+      "name": "Patent glass nd=1.927 Vd=24.32",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.927,
+        "Vd": 24.32
+      }
+    },
+    "PatentGlass_nd1p946_Vd17p94": {
+      "name": "Patent glass nd=1.946 Vd=17.94",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.946,
+        "Vd": 17.94
+      }
+    },
+    "PatentGlass_nd1p696_Vd55p54": {
+      "name": "Patent glass nd=1.696 Vd=55.54",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.696,
+        "Vd": 55.54
+      }
+    },
+    "PatentGlass_nd1p911_Vd35p13": {
+      "name": "Patent glass nd=1.911 Vd=35.13",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.911,
+        "Vd": 35.13
+      }
+    },
+    "PatentGlass_nd1p746_Vd74p57": {
+      "name": "Patent glass nd=1.746 Vd=74.57",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.746,
+        "Vd": 74.57
+      }
+    },
+    "PatentGlass_nd1p869_Vd24p66": {
+      "name": "Patent glass nd=1.869 Vd=24.66",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.869,
+        "Vd": 24.66
+      }
+    },
+    "PatentGlass_nd1p774_Vd48p55": {
+      "name": "Patent glass nd=1.774 Vd=48.55",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.774,
+        "Vd": 48.55
+      }
+    },
+    "PatentGlass_nd1p944_Vd17p98": {
+      "name": "Patent glass nd=1.944 Vd=17.98",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.944,
+        "Vd": 17.98
+      }
+    },
+    "PatentGlass_nd1p654_Vd57p38": {
+      "name": "Patent glass nd=1.654 Vd=57.38",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.654,
+        "Vd": 57.38
+      }
+    },
+    "PatentGlass_nd1p560_Vd63p13": {
+      "name": "Patent glass nd=1.560 Vd=63.13",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.56,
+        "Vd": 63.13
+      }
+    },
+    "PatentGlass_nd1p551_Vd41p42": {
+      "name": "Patent glass nd=1.551 Vd=41.42",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.551,
+        "Vd": 41.42
+      }
+    },
+    "PatentGlass_nd1p890_Vd36p81": {
+      "name": "Patent glass nd=1.890 Vd=36.81",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.89,
+        "Vd": 36.81
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "8eb1a459-d479-57ae-974d-97a56bff6876",
+      "name": "L01 cylindrical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -120.0
+        }
+      },
+      "surfaces": [
+        {
+          "id": "ffbd5283-f6f0-53fc-bb55-eeb5ee60a016",
+          "semi_aperture": 31.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 95.41000366210938,
+            "axis": "y"
+          },
+          "thickness": 3.490000009536743,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.02500000037252903,
+                0.3199999928474426,
+                1.0
+              ],
+              "strength": 0.03999999910593033
+            }
+          ]
+        },
+        {
+          "id": "9acb1f93-646e-52f2-a969-d08d4d0dc608",
+          "semi_aperture": 31.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 40.244998931884766,
+            "axis": "y"
+          },
+          "thickness": 28.599998474121094,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.02500000037252903,
+                0.3700000047683716,
+                1.0
+              ],
+              "strength": 0.03999999910593033
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p804_Vd46p59"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "9184a97b-1431-55f3-bbca-3bb333e30e2e",
+      "name": "L02-L03 cemented cylindrical doublet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -87.91
+        }
+      },
+      "surfaces": [
+        {
+          "id": "ac1686cb-6198-5ba7-973a-6821af28813e",
+          "semi_aperture": 28.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": -1800.0,
+            "axis": "y"
+          },
+          "thickness": 3.440000057220459,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.02500000037252903,
+                0.41999998688697815,
+                1.0
+              ],
+              "strength": 0.02800000086426735
+            }
+          ]
+        },
+        {
+          "id": "4cb09f43-2d3f-53d9-b0f0-3dbccf22ad35",
+          "semi_aperture": 28.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 39.099998474121094,
+            "axis": "y"
+          },
+          "thickness": 14.800000190734863
+        },
+        {
+          "id": "f8bb1bf3-0f5d-534b-b5a5-98a9bfe91434",
+          "semi_aperture": 28.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 150.0,
+            "axis": "y"
+          },
+          "thickness": 8.099998474121094,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.02500000037252903,
+                0.3700000047683716,
+                1.0
+              ],
+              "strength": 0.02800000086426735
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p518_Vd52p00"
+        },
+        {
+          "glass": "PatentGlass_nd1p831_Vd28p53"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "dcb2f6de-99f3-5c03-abd7-e6afd89d881c",
+      "name": "L04 perpendicular cylindrical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -61.56999999999999
+        }
+      },
+      "surfaces": [
+        {
+          "id": "f711649a-d3a0-5fd3-8312-57e0fa5581d8",
+          "semi_aperture": 24.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 74.95999908447266,
+            "axis": "x"
+          },
+          "thickness": 15.869999885559082,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.02500000037252903,
+                0.41999998688697815,
+                1.0
+              ],
+              "strength": 0.03200000151991844
+            }
+          ]
+        },
+        {
+          "id": "52469429-bc0c-527b-afdf-adb242564aca",
+          "semi_aperture": 14.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 26.479999542236328,
+            "axis": "x"
+          },
+          "thickness": 2.1199989318847656,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.02500000037252903,
+                0.3199999928474426,
+                1.0
+              ],
+              "strength": 0.03200000151991844
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p927_Vd24p32"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "740b7dab-8cc4-50e8-833a-809c456824ce",
+      "name": "L05 perpendicular cylindrical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -43.58
+        }
+      },
+      "surfaces": [
+        {
+          "id": "0f8d7bae-1739-522d-b96d-a65c07845466",
+          "semi_aperture": 14.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 27.540000915527344,
+            "axis": "x"
+          },
+          "thickness": 4.639999866485596,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.02500000037252903,
+                0.3700000047683716,
+                1.0
+              ],
+              "strength": 0.024000000208616257
+            }
+          ]
+        },
+        {
+          "id": "ead2c846-c54c-516b-94f0-2baa82701f24",
+          "semi_aperture": 14.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 47.31999969482422,
+            "axis": "x"
+          },
+          "thickness": 1.035003662109375,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.02500000037252903,
+                0.41999998688697815,
+                1.0
+              ],
+              "strength": 0.024000000208616257
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p946_Vd17p94"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "e5b69189-e526-5135-a9e7-4fc2fc4d059c",
+      "name": "L06 spherical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -37.905
+        }
+      },
+      "surfaces": [
+        {
+          "id": "4c03f3a5-3935-5710-93a0-3c2a6160d4c1",
+          "semi_aperture": 19.0,
+          "form": {
+            "type": "sphere",
+            "radius": 52.83000183105469
+          },
+          "thickness": 5.400000095367432,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        },
+        {
+          "id": "e7fb4c56-f7e5-5d1b-9230-9af270172d90",
+          "semi_aperture": 19.0,
+          "form": {
+            "type": "sphere",
+            "radius": -169.42999267578125
+          },
+          "thickness": 0.24999618530273438,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p696_Vd55p54"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "96a96aa1-ba54-50e5-a902-bfc009a61d77",
+      "name": "L07 spherical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -32.255
+        }
+      },
+      "surfaces": [
+        {
+          "id": "0d70c2f5-7a16-5599-983d-d10802303bf5",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": 19.270000457763672
+          },
+          "thickness": 4.099999904632568,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        },
+        {
+          "id": "a37b710a-1a2f-5153-9779-7f993eaae461",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": 44.349998474121094
+          },
+          "thickness": 1.1300010681152344,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.1599999964237213,
+                0.6399999856948853,
+                1.0
+              ],
+              "strength": 0.010999999940395355
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p911_Vd35p13"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "a87e821b-f918-57dd-8f2b-e094ea314f6d",
+      "name": "L08 spherical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -27.025000000000002
+        }
+      },
+      "surfaces": [
+        {
+          "id": "d735b567-c648-502e-8d5b-b8352e8653e9",
+          "semi_aperture": 10.199999809265137,
+          "form": {
+            "type": "sphere",
+            "radius": 164.63999938964844
+          },
+          "thickness": 3.799999952316284,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        },
+        {
+          "id": "ecc8be4b-1f71-5db1-b12b-f7f9413fcd5f",
+          "semi_aperture": 10.182900428771973,
+          "form": {
+            "type": "sphere",
+            "radius": 11.1899995803833
+          },
+          "thickness": 5.531999588012695,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p746_Vd74p57"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "d3da5a9a-2ba0-5268-a8cc-1efa11ebe935",
+      "name": "STOP 10-blade iris",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -17.693
+        }
+      },
+      "surfaces": [
+        {
+          "id": "298ab14e-1e61-5568-bc9b-0122287a9837",
+          "semi_aperture": 6.0,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "is_stop": true,
+          "thickness": 0.010000228881835938,
+          "modifiers": [
+            {
+              "type": "aperture",
+              "shape": "polygon",
+              "blades": 10,
+              "rotation_deg": 18.000000500895634
+            }
+          ]
+        }
+      ],
+      "materials": []
+    },
+    {
+      "type": "element",
+      "id": "99473e15-4c10-5154-b79a-a64d3d4a1141",
+      "name": "L09-L10 cemented spherical doublet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -17.683
+        }
+      },
+      "surfaces": [
+        {
+          "id": "78af60e6-0c00-5f24-a2ea-7d45d296a94c",
+          "semi_aperture": 7.0,
+          "form": {
+            "type": "sphere",
+            "radius": 28.584999084472656
+          },
+          "thickness": 1.2999999523162842,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        },
+        {
+          "id": "e7aa33c2-db2a-5630-b6ed-5caa57a1e988",
+          "semi_aperture": 7.0,
+          "form": {
+            "type": "sphere",
+            "radius": 11.579999923706055
+          },
+          "thickness": 3.700000047683716
+        },
+        {
+          "id": "9b447253-6b42-5dbe-87bf-febd40a1841d",
+          "semi_aperture": 7.0,
+          "form": {
+            "type": "sphere",
+            "radius": 38.029998779296875
+          },
+          "thickness": 3.1500015258789062,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p869_Vd24p66"
+        },
+        {
+          "glass": "PatentGlass_nd1p774_Vd48p55"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "1f30e923-02e2-5300-bc04-473fe44f6b14",
+      "name": "L11 spherical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -9.533
+        }
+      },
+      "surfaces": [
+        {
+          "id": "03759046-fea0-55d9-89e3-4aad59fcab50",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": 92.30999755859375
+          },
+          "thickness": 2.9000000953674316,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        },
+        {
+          "id": "dfdc2eed-aa6e-5b30-b62b-868eec14d489",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": -53.20000076293945
+          },
+          "thickness": 1.5699996948242188,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p944_Vd17p98"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "4c9aa661-1af5-5898-84c1-65ba9e03d9b5",
+      "name": "L12 spherical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -5.063
+        }
+      },
+      "surfaces": [
+        {
+          "id": "55b4421f-b1b6-591e-8312-f068b8846e2f",
+          "semi_aperture": 7.5,
+          "form": {
+            "type": "sphere",
+            "radius": -71.87999725341797
+          },
+          "thickness": 4.550000190734863,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        },
+        {
+          "id": "a6362ffd-d8ed-5fc2-a2f8-997550b19e9c",
+          "semi_aperture": 7.5,
+          "form": {
+            "type": "sphere",
+            "radius": -18.3700008392334
+          },
+          "thickness": 0.20000001788139343,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                1.0,
+                0.47999998927116394,
+                0.11999999731779099
+              ],
+              "strength": 0.008999999612569809
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p654_Vd57p38"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "36d0deda-eb16-5bb6-876e-565ace79d781",
+      "name": "L13-L14 cemented spherical doublet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -0.3129999999999997
+        }
+      },
+      "surfaces": [
+        {
+          "id": "3add8a28-750f-5613-9299-f16343eea3f2",
+          "semi_aperture": 8.0,
+          "form": {
+            "type": "sphere",
+            "radius": -113.1500015258789
+          },
+          "thickness": 5.019999980926514,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        },
+        {
+          "id": "62b8a59f-7ce8-5721-ab53-7ccdedd6acbf",
+          "semi_aperture": 8.0,
+          "form": {
+            "type": "sphere",
+            "radius": -22.90999984741211
+          },
+          "thickness": 4.099999904632568
+        },
+        {
+          "id": "a5a8b480-21de-5758-8698-1a6a95d6215c",
+          "semi_aperture": 8.0,
+          "form": {
+            "type": "sphere",
+            "radius": -31.290000915527344
+          },
+          "thickness": 2.0400009155273438,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p560_Vd63p13"
+        },
+        {
+          "glass": "PatentGlass_nd1p551_Vd41p42"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "0354e194-f799-5c58-8bc5-3c9763f9c541",
+      "name": "L15 spherical singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": 10.847000000000001
+        }
+      },
+      "surfaces": [
+        {
+          "id": "e997db2f-9de8-5105-bf26-5c848992476f",
+          "semi_aperture": 8.0,
+          "form": {
+            "type": "sphere",
+            "radius": -17.760000228881836
+          },
+          "thickness": 1.2999999523162842,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "artist",
+              "tint": [
+                0.11999999731779099,
+                0.5799999833106995,
+                1.0
+              ],
+              "strength": 0.009999999776482582
+            }
+          ]
+        },
+        {
+          "id": "50af37b1-8eb1-577e-921e-a50add64384a",
+          "semi_aperture": 8.0,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "thickness": 15.4921293258667,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "glass": "PatentGlass_nd1p890_Vd36p81"
+        }
+      ]
+    }
+  ],
+  "pivots": []
+}

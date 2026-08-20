@@ -1,0 +1,190 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {
+    "name": "Example Doublet + Singlet",
+    "focal_length_mm": 50.0
+  },
+  "glass_catalogue": {
+    "N-BK7": {
+      "name": "N-BK7",
+      "catalogue_ref": "Schott:N-BK7",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.03961212,
+          0.23179234,
+          1.01046945
+        ],
+        "C": [
+          0.00600069867,
+          0.0200179144,
+          103.560653
+        ]
+      }
+    },
+    "SF5": {
+      "name": "SF5",
+      "catalogue_ref": "Schott:SF5",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.46141885,
+          0.247713019,
+          0.949995832
+        ],
+        "C": [
+          0.0111826126,
+          0.0508594669,
+          112.041888
+        ]
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "11111111-1111-1111-1111-111111111111",
+      "name": "Front Doublet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0,
+          "y": 0,
+          "z": -56.0
+        }
+      },
+      "materials": [
+        {
+          "glass": "N-BK7"
+        },
+        {
+          "glass": "SF5"
+        }
+      ],
+      "surfaces": [
+        {
+          "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "semi_aperture": 25.0,
+          "thickness": 5.3,
+          "form": {
+            "type": "sphere",
+            "radius": 47.07
+          },
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 1
+            }
+          ]
+        },
+        {
+          "id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          "semi_aperture": 25.0,
+          "thickness": 2.8,
+          "form": {
+            "type": "sphere",
+            "radius": 184.28
+          }
+        },
+        {
+          "id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+          "semi_aperture": 24.0,
+          "form": {
+            "type": "sphere",
+            "radius": -360.0
+          },
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "22222222-2222-2222-2222-222222222222",
+      "name": "Aperture Stop",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0,
+          "y": 0,
+          "z": -43.5
+        }
+      },
+      "materials": [],
+      "surfaces": [
+        {
+          "id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
+          "semi_aperture": 12.5,
+          "is_stop": true,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "33333333-3333-3333-3333-333333333333",
+      "name": "Rear Singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0,
+          "y": 0,
+          "z": -34.0
+        }
+      },
+      "materials": [
+        {
+          "glass": "N-BK7"
+        }
+      ],
+      "surfaces": [
+        {
+          "id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+          "semi_aperture": 18.0,
+          "thickness": 4.0,
+          "form": {
+            "type": "sphere",
+            "radius": 58.0
+          },
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 1
+            }
+          ]
+        },
+        {
+          "id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+          "semi_aperture": 18.0,
+          "thickness": 30.0,
+          "form": {
+            "type": "sphere",
+            "radius": -120.0
+          },
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pivots": []
+}

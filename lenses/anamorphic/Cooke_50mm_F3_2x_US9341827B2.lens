@@ -1,0 +1,799 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {
+    "name": "Cooke 50mm F3 2x anamorphic",
+    "description": "2x front-anamorphic cine prime reconstruction.",
+    "source": "US9341827B2 / GB2513993A",
+    "focal_length_mm": 50.0,
+    "nominal_f_number": 3.0,
+    "squeeze": 2.0,
+    "status": "reconstructed from published patent data; not a vendor prescription"
+  },
+  "glass_catalogue": {
+    "Schott_N-BK7": {
+      "name": "N-BK7",
+      "catalogue_ref": "Schott:N-BK7",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.03961212,
+          0.231792344,
+          1.01046945
+        ],
+        "C": [
+          0.00600069867,
+          0.0200179144,
+          103.560653
+        ]
+      }
+    },
+    "Custom_6e480841": {
+      "name": "Custom_6e480841",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.762,
+        "Vd": 40.1
+      }
+    },
+    "Custom_fdcbc298": {
+      "name": "Custom_fdcbc298",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.762,
+        "Vd": 40.1
+      }
+    },
+    "Schott_SF5": {
+      "name": "SF5",
+      "catalogue_ref": "Schott:SF5",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.46141885,
+          0.247713019,
+          0.949995832
+        ],
+        "C": [
+          0.0111826126,
+          0.0508594669,
+          112.041888
+        ]
+      }
+    },
+    "Ohara_APL1": {
+      "name": "APL1",
+      "catalogue_ref": "Ohara:APL1",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.517277,
+        "Vd": 69.563209
+      }
+    },
+    "Ohara_S-BSM71": {
+      "name": "S-BSM71",
+      "catalogue_ref": "Ohara:S-BSM71",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.50847885,
+          0.158099826,
+          1.36815368
+        ],
+        "C": [
+          0.00812769076,
+          0.0354200898,
+          136.110038
+        ]
+      }
+    },
+    "Custom_55d5dff9": {
+      "name": "Custom_55d5dff9",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.8052,
+        "Vd": 25.46
+      }
+    },
+    "Custom_d9a94117": {
+      "name": "Custom_d9a94117",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.8052,
+        "Vd": 25.46
+      }
+    },
+    "Ohara_S-LAL8": {
+      "name": "S-LAL8",
+      "catalogue_ref": "Ohara:S-LAL8",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.30663291,
+          0.571377253,
+          1.24303605
+        ],
+        "C": [
+          0.00611862448,
+          0.021272147,
+          90.6285686
+        ]
+      }
+    },
+    "Schott_SF57": {
+      "name": "SF57",
+      "catalogue_ref": "Schott:SF57",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.81651371,
+          0.428893641,
+          1.07186278
+        ],
+        "C": [
+          0.0143704198,
+          0.0592801172,
+          121.419942
+        ]
+      }
+    },
+    "Ohara_S-LAH58": {
+      "name": "S-LAH58",
+      "catalogue_ref": "Ohara:S-LAH58",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.78764964,
+          0.6526356,
+          1.79914564
+        ],
+        "C": [
+          0.00847378536,
+          0.0313126408,
+          132.788001
+        ]
+      }
+    },
+    "Ohara_S-LAL12": {
+      "name": "S-LAL12",
+      "catalogue_ref": "Ohara:S-LAL12",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          0.992053895,
+          0.771377731,
+          1.18296264
+        ],
+        "C": [
+          0.0167095063,
+          0.00236750156,
+          105.90108
+        ]
+      }
+    },
+    "Ohara_S-FPL51": {
+      "name": "S-FPL51",
+      "catalogue_ref": "Ohara:S-FPL51",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.17010505,
+          0.0475710783,
+          0.763832445
+        ],
+        "C": [
+          0.00616203924,
+          0.0263372876,
+          141.882642
+        ]
+      }
+    },
+    "Ohara_S-BSL7": {
+      "name": "S-BSL7",
+      "catalogue_ref": "Ohara:S-BSL7",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.1515019,
+          0.118583612,
+          1.26301359
+        ],
+        "C": [
+          0.010598413,
+          -0.011822519,
+          129.617662
+        ]
+      }
+    },
+    "Ohara_S-LAL59": {
+      "name": "S-LAL59",
+      "catalogue_ref": "Ohara:S-LAL59",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.13962742,
+          0.805227838,
+          1.29488061
+        ],
+        "C": [
+          0.00493294862,
+          0.020247996,
+          93.4746507
+        ]
+      }
+    },
+    "Ohara_S-LAL18": {
+      "name": "S-LAL18",
+      "catalogue_ref": "Ohara:S-LAL18",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.50276318,
+          0.430224497,
+          1.3472606
+        ],
+        "C": [
+          0.0145462356,
+          -0.00332784153,
+          93.3508342
+        ]
+      }
+    },
+    "Custom_68fb7a15": {
+      "name": "Custom_68fb7a15",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.713,
+        "Vd": 53.87
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "a160bbdb-b5d1-4fdb-8e39-5fbb07f17d50",
+      "name": "1-F1 (ohara s-lal8)",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -222.9870147705078
+        }
+      },
+      "surfaces": [
+        {
+          "id": "9316a9a0-ec58-464e-a3d4-7ae7bfa64685",
+          "semi_aperture": 44.810001373291016,
+          "form": {
+            "type": "sphere",
+            "radius": 126.302001953125
+          },
+          "thickness": 5.199999809265137
+        },
+        {
+          "id": "7a8c59e5-a16c-4e98-8c59-05d124acc19b",
+          "semi_aperture": 41.68000030517578,
+          "form": {
+            "type": "sphere",
+            "radius": 97.24500274658203
+          },
+          "thickness": 36.813995361328125
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_68fb7a15"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "49abb614-2f5f-499f-b3a6-5948a9c9ad8e",
+      "name": "2-F1",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -180.97301578521729
+        }
+      },
+      "surfaces": [
+        {
+          "id": "d215ea19-5544-4963-93c6-68d802507dbf",
+          "semi_aperture": 33.93000030517578,
+          "form": {
+            "type": "sphere",
+            "radius": 353.0639953613281
+          },
+          "thickness": 3.799999952316284
+        },
+        {
+          "id": "1bc6bfbd-df7b-4316-b5b4-e55b7984a034",
+          "semi_aperture": 31.399999618530273,
+          "form": {
+            "type": "sphere",
+            "radius": 92.75900268554688
+          },
+          "thickness": 6.8830108642578125
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-LAL59"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "6f285192-757a-426e-a5e1-70e8c352ea45",
+      "name": "3",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -170.29001593589783
+        }
+      },
+      "surfaces": [
+        {
+          "id": "12f71e4c-8960-44ee-a383-73aea08e093b",
+          "semi_aperture": 25.260000228881836,
+          "form": {
+            "type": "cylindrical",
+            "radius": 0.0,
+            "axis": "y"
+          },
+          "thickness": 3.5
+        },
+        {
+          "id": "c69f613b-9e84-42e8-ae32-6e091ede3567",
+          "semi_aperture": 24.3700008392334,
+          "form": {
+            "type": "cylindrical",
+            "radius": 42.117000579833984,
+            "axis": "y"
+          },
+          "thickness": 14.8389892578125
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-BSL7"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "5c9c50df-0ac5-494a-a4b4-2f8c6b083e31",
+      "name": "4",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -151.95101618766785
+        }
+      },
+      "surfaces": [
+        {
+          "id": "0ee8851b-3c0e-4d12-89e6-4bbc0f174ea9",
+          "semi_aperture": 22.899999618530273,
+          "form": {
+            "type": "cylindrical",
+            "radius": -32.150001525878906,
+            "axis": "y"
+          },
+          "thickness": 3.450000047683716
+        },
+        {
+          "id": "11230b40-3fcb-4507-b40b-35b247087132",
+          "semi_aperture": 22.760000228881836,
+          "form": {
+            "type": "cylindrical",
+            "radius": 0.0,
+            "axis": "y"
+          },
+          "thickness": 5.746002197265625
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-FPL51"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "30857acb-94cc-4d64-a4db-b1a1eda0d8b1",
+      "name": "5",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -142.7550163269043
+        }
+      },
+      "surfaces": [
+        {
+          "id": "3e7b2c16-99dc-447f-b5b8-f2bec01d7c05",
+          "semi_aperture": 22.59000015258789,
+          "form": {
+            "type": "cylindrical",
+            "radius": -173.15499877929688,
+            "axis": "x"
+          },
+          "thickness": 27.940000534057617
+        },
+        {
+          "id": "4b53393b-2016-44e3-b09d-3a1028a251c1",
+          "semi_aperture": 23.299999237060547,
+          "form": {
+            "type": "cylindrical",
+            "radius": -162.218994140625,
+            "axis": "x"
+          },
+          "thickness": 0.6300048828125
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Schott_SF57"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "7db43122-579d-4502-8d5f-657803c1bfe7",
+      "name": "6",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -114.18501579761505
+        }
+      },
+      "surfaces": [
+        {
+          "id": "3d30f8c1-4f1a-4ad5-8306-2bd0fe1c7548",
+          "semi_aperture": 23.209999084472656,
+          "form": {
+            "type": "cylindrical",
+            "radius": 0.0,
+            "axis": "y"
+          },
+          "thickness": 12.510000228881836
+        },
+        {
+          "id": "05c98325-76c4-4978-be61-a105fcd3b43d",
+          "semi_aperture": 22.889999389648438,
+          "form": {
+            "type": "cylindrical",
+            "radius": -61.86800003051758,
+            "axis": "y"
+          },
+          "thickness": 0.6529922485351562
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-LAL12"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "877aa14f-738b-4812-aeb1-8d7f3828b519",
+      "name": "7",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -101.02201557159424
+        }
+      },
+      "surfaces": [
+        {
+          "id": "93b69b4a-5c23-4803-9001-a85fe2350672",
+          "semi_aperture": 22.280000686645508,
+          "form": {
+            "type": "cylindrical",
+            "radius": 50.915000915527344,
+            "axis": "x"
+          },
+          "thickness": 9.576000213623047
+        },
+        {
+          "id": "5d664e85-a099-4633-b43a-39cd905abc83",
+          "semi_aperture": 20.81999969482422,
+          "form": {
+            "type": "cylindrical",
+            "radius": 46.84700012207031,
+            "axis": "x"
+          },
+          "thickness": 1.2600021362304688
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-LAH58"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "76d2c373-60e8-489c-a489-6f63f20fad2c",
+      "name": "8",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -90.18601536750793
+        }
+      },
+      "surfaces": [
+        {
+          "id": "4521d6c3-a732-4ea4-bc2a-d9a583ef4f43",
+          "semi_aperture": 20.270000457763672,
+          "form": {
+            "type": "sphere",
+            "radius": 53.606998443603516
+          },
+          "thickness": 7.688000202178955
+        },
+        {
+          "id": "7dadab73-f18f-4794-8e27-398b3f0152fb",
+          "semi_aperture": 17.950000762939453,
+          "form": {
+            "type": "sphere",
+            "radius": 31.937000274658203
+          },
+          "thickness": 2.4589920043945312
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Schott_SF57"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "588182d7-033c-4749-86c5-f07085e46bb9",
+      "name": "9",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -80.03901505470276
+        }
+      },
+      "surfaces": [
+        {
+          "id": "b652f3e7-4318-4656-874a-7453aa3cd6ab",
+          "semi_aperture": 18.170000076293945,
+          "form": {
+            "type": "sphere",
+            "radius": 33.808998107910156
+          },
+          "thickness": 10.711999893188477
+        },
+        {
+          "id": "493ab974-41a1-4b95-bb44-7fa773648479",
+          "semi_aperture": 17.139999389648438,
+          "form": {
+            "type": "sphere",
+            "radius": -417.9440002441406
+          },
+          "thickness": 0.25
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-LAL8"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "b525cd96-9d32-4115-82aa-6f958f94f5bc",
+      "name": "10 (cdgm zf7lht - using h-zf7lagt)",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -69.07701516151428
+        }
+      },
+      "surfaces": [
+        {
+          "id": "39b525cf-32b2-4e4a-ac06-fb962b815fae",
+          "semi_aperture": 15.420000076293945,
+          "form": {
+            "type": "sphere",
+            "radius": 34.016998291015625
+          },
+          "thickness": 13.715999603271484
+        },
+        {
+          "id": "7c4a409a-23c4-4d46-bc39-c93784f169e1",
+          "semi_aperture": 10.050000190734863,
+          "form": {
+            "type": "sphere",
+            "radius": 26.110000610351562
+          },
+          "thickness": 13.684001922607422
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_d9a94117"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "1dde4c19-9afb-4ddb-89e9-45b80315b3e3",
+      "name": "Aperture Stop",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -41.67701554298401
+        }
+      },
+      "surfaces": [
+        {
+          "id": "26de4c49-cbac-4f55-ba7b-62df2d5d4901",
+          "semi_aperture": 7.510000228881836,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "is_stop": true,
+          "thickness": 8.868000030517578
+        }
+      ],
+      "materials": []
+    },
+    {
+      "type": "element",
+      "id": "dc02f802-c73d-47c4-88fc-15a7af555d57",
+      "name": "11-12 (cdgm zf7lht - using h-zf7lagt)",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -32.80901551246643
+        }
+      },
+      "surfaces": [
+        {
+          "id": "9b0fd758-2932-4375-836c-a95bd2fede27",
+          "semi_aperture": 6.730000019073486,
+          "form": {
+            "type": "sphere",
+            "radius": -18.475000381469727
+          },
+          "thickness": 2.640000104904175
+        },
+        {
+          "id": "7e6ee0ce-05b4-485f-9c5e-8b80ea8758dd",
+          "semi_aperture": 8.199999809265137,
+          "form": {
+            "type": "sphere",
+            "radius": 82.96700286865234
+          },
+          "thickness": 8.996999740600586
+        },
+        {
+          "id": "8fa21595-16d1-4432-b90c-9bea21f3a96d",
+          "semi_aperture": 10.850000381469727,
+          "form": {
+            "type": "sphere",
+            "radius": -31.527000427246094
+          },
+          "thickness": 0.14000320434570312
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_55d5dff9"
+        },
+        {
+          "glass": "Ohara_S-BSM71"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "18748948-d2eb-4a7a-aecb-7cead1059797",
+      "name": "13 (cdgm hzlaf55a - using hlaf55a)",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -21.032015666365623
+        }
+      },
+      "surfaces": [
+        {
+          "id": "694e44a1-8a31-426e-a322-02477bbdfb8d",
+          "semi_aperture": 11.489999771118164,
+          "form": {
+            "type": "sphere",
+            "radius": -121.59600067138672
+          },
+          "thickness": 3.431999921798706
+        },
+        {
+          "id": "f242ca16-960f-4fa5-b481-6a962b1f6fa8",
+          "semi_aperture": 12.029999732971191,
+          "form": {
+            "type": "sphere",
+            "radius": -38.40299987792969
+          },
+          "thickness": 0.10000038146972656
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_fdcbc298"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "d08e1324-fff2-4d60-a6db-6845427cd1c4",
+      "name": "14 (cdgm hzlaf55a - using hlaf55a)",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -17.5000157430768
+        }
+      },
+      "surfaces": [
+        {
+          "id": "0cda3d2f-14cb-4d1e-9aa0-21fd629d2c77",
+          "semi_aperture": 12.670000076293945,
+          "form": {
+            "type": "sphere",
+            "radius": 84.97200012207031
+          },
+          "thickness": 3.447000026702881
+        },
+        {
+          "id": "97ef9b8b-51e4-40cb-9b77-adfd6515d20b",
+          "semi_aperture": 13.199999809265137,
+          "form": {
+            "type": "sphere",
+            "radius": -179.04400634765625
+          },
+          "thickness": 36.06700134277344
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_6e480841"
+        }
+      ]
+    }
+  ],
+  "pivots": []
+}

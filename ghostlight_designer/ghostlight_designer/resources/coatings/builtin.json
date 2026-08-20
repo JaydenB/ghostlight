@@ -1,0 +1,265 @@
+{
+  "format": "ghostlight-coating-catalogue",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "source": "Built-in",
+  "coatings": [
+    {
+      "key": "uncoated",
+      "display_name": "Uncoated (bare Fresnel)",
+      "source_vendor": "Built-in",
+      "tags": [
+        "simple",
+        "reference"
+      ],
+      "description": "No coating. Full bare-glass reflectance — the strongest, most neutral ghosts.",
+      "payload": {
+        "type": "coating",
+        "model": "simple",
+        "ar_layers": 0
+      }
+    },
+    {
+      "key": "mgf2_single",
+      "display_name": "Single-layer MgF2 AR",
+      "source_vendor": "Built-in",
+      "tags": [
+        "simple",
+        "ar",
+        "classic"
+      ],
+      "description": "One quarter-wave MgF2 layer at 550 nm. The classic low-cost AR coat; faint purple ghosts.",
+      "payload": {
+        "type": "coating",
+        "model": "simple",
+        "ar_layers": 1
+      }
+    },
+    {
+      "key": "multicoat_approx",
+      "display_name": "Multi-coat (approx.)",
+      "source_vendor": "Built-in",
+      "tags": [
+        "simple",
+        "ar"
+      ],
+      "description": "Coarse multi-coat approximation (ar_layers=2). Weaker ghosts than single-coat.",
+      "payload": {
+        "type": "coating",
+        "model": "simple",
+        "ar_layers": 2
+      }
+    },
+    {
+      "key": "broadband_ar_spectral",
+      "display_name": "Broadband AR (spectral)",
+      "source_vendor": "Built-in",
+      "tags": [
+        "spectral",
+        "ar",
+        "modern"
+      ],
+      "description": "Low, flat reflectance across the visible with a faint green residual — a modern broadband multicoat.",
+      "payload": {
+        "type": "coating",
+        "model": "spectral",
+        "out_of_range": "clamp",
+        "data": [
+          {
+            "lambda_nm": 400,
+            "r": 0.012
+          },
+          {
+            "lambda_nm": 450,
+            "r": 0.006
+          },
+          {
+            "lambda_nm": 500,
+            "r": 0.004
+          },
+          {
+            "lambda_nm": 550,
+            "r": 0.003
+          },
+          {
+            "lambda_nm": 600,
+            "r": 0.004
+          },
+          {
+            "lambda_nm": 650,
+            "r": 0.007
+          },
+          {
+            "lambda_nm": 700,
+            "r": 0.013
+          }
+        ]
+      }
+    },
+    {
+      "key": "artist_vintage_amber",
+      "display_name": "Vintage Amber (artist)",
+      "source_vendor": "Built-in",
+      "tags": [
+        "artist",
+        "warm",
+        "vintage"
+      ],
+      "description": "Warm amber-tinted ghosts reminiscent of older single-coated cine glass.",
+      "payload": {
+        "type": "coating",
+        "model": "artist",
+        "tint": [
+          1.0,
+          0.6,
+          0.2
+        ],
+        "strength": 0.06
+      }
+    },
+    {
+      "key": "artist_cool_teal",
+      "display_name": "Cool Teal (artist)",
+      "source_vendor": "Built-in",
+      "tags": [
+        "artist",
+        "cool",
+        "modern"
+      ],
+      "description": "Cool cyan/teal ghosts typical of modern broadband multicoats.",
+      "payload": {
+        "type": "coating",
+        "model": "artist",
+        "tint": [
+          0.1,
+          0.8,
+          0.9
+        ],
+        "strength": 0.03
+      }
+    },
+    {
+      "key": "layers_mgf2_quarterwave",
+      "display_name": "MgF2 quarter-wave (TMM)",
+      "source_vendor": "Built-in",
+      "tags": [
+        "layers",
+        "tmm",
+        "ar",
+        "physical"
+      ],
+      "description": "Physically-modelled single MgF2 quarter-wave layer (TMM). Angle-accurate ghost colour shift across field.",
+      "payload": {
+        "type": "coating",
+        "model": "layers",
+        "layers": [
+          {
+            "material": "MgF2",
+            "thickness_nm": 99.6,
+            "nk_table": [
+              {
+                "lambda_um": 0.4,
+                "n": 1.384,
+                "k": 0.0
+              },
+              {
+                "lambda_um": 0.55,
+                "n": 1.38,
+                "k": 0.0
+              },
+              {
+                "lambda_um": 0.7,
+                "n": 1.377,
+                "k": 0.0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "layers_v_coat_broadband",
+      "display_name": "3-layer broadband V-coat (TMM)",
+      "source_vendor": "Built-in",
+      "tags": [
+        "layers",
+        "tmm",
+        "ar",
+        "physical",
+        "broadband"
+      ],
+      "description": "MgF2 / ZrO2 / MgF2 three-layer stack — a broadband V-coat with a physically-accurate green-magenta residual across angle.",
+      "payload": {
+        "type": "coating",
+        "model": "layers",
+        "layers": [
+          {
+            "material": "MgF2",
+            "thickness_nm": 95.0,
+            "nk_table": [
+              {
+                "lambda_um": 0.4,
+                "n": 1.384,
+                "k": 0.0
+              },
+              {
+                "lambda_um": 0.55,
+                "n": 1.38,
+                "k": 0.0
+              },
+              {
+                "lambda_um": 0.7,
+                "n": 1.377,
+                "k": 0.0
+              }
+            ]
+          },
+          {
+            "material": "ZrO2",
+            "thickness_nm": 55.0,
+            "nk_table": [
+              {
+                "lambda_um": 0.4,
+                "n": 2.15,
+                "k": 0.0
+              },
+              {
+                "lambda_um": 0.55,
+                "n": 2.1,
+                "k": 0.0
+              },
+              {
+                "lambda_um": 0.7,
+                "n": 2.06,
+                "k": 0.0
+              }
+            ]
+          },
+          {
+            "material": "MgF2",
+            "thickness_nm": 120.0,
+            "nk_table": [
+              {
+                "lambda_um": 0.4,
+                "n": 1.384,
+                "k": 0.0
+              },
+              {
+                "lambda_um": 0.55,
+                "n": 1.38,
+                "k": 0.0
+              },
+              {
+                "lambda_um": 0.7,
+                "n": 1.377,
+                "k": 0.0
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

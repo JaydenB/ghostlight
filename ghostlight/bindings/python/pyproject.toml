@@ -1,0 +1,29 @@
+[build-system]
+requires = ["scikit-build-core>=0.8", "pybind11>=2.12", "numpy>=1.23"]
+build-backend = "scikit_build_core.build"
+
+[project]
+# Distribution name is hyphenated and suffixed; the import name is plain
+# `ghostlight`. The two are independent (cf. pillow -> PIL), which sidesteps
+# the unrelated `ghostlight` placeholder squatting the bare name on PyPI.
+name = "ghostlight-optics"
+version = "0.1.0"
+description = "Python bindings for the Ghostlight lens-flare renderer"
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.23"]
+
+[project.urls]
+Homepage = "https://github.com/JaydenB/ghostlight"
+Issues = "https://github.com/JaydenB/ghostlight/issues"
+
+[tool.scikit-build]
+# CMakeLists.txt is in this directory (bindings/python/)
+cmake.source-dir = "."
+# The pure-Python package to include in the wheel alongside the extension
+wheel.packages = ["ghostlight"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "gpu: requires a CUDA-capable GPU",
+]

@@ -1,0 +1,265 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {},
+  "glass_catalogue": {
+    "Schott_N-BK7": {
+      "name": "N-BK7",
+      "catalogue_ref": "Schott:N-BK7",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.03961212,
+          0.231792344,
+          1.01046945
+        ],
+        "C": [
+          0.00600069867,
+          0.0200179144,
+          103.560653
+        ]
+      }
+    },
+    "Schott_SF5": {
+      "name": "SF5",
+      "catalogue_ref": "Schott:SF5",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.46141885,
+          0.247713019,
+          0.949995832
+        ],
+        "C": [
+          0.0111826126,
+          0.0508594669,
+          112.041888
+        ]
+      }
+    },
+    "Custom_923cfbf4": {
+      "name": "Custom_923cfbf4",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.5481,
+        "Vd": 45.9
+      }
+    },
+    "Custom_d84b5175": {
+      "name": "Custom_d84b5175",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6578,
+        "Vd": 51.2
+      }
+    },
+    "Custom_5ff09bbd": {
+      "name": "Custom_5ff09bbd",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.5488,
+        "Vd": 63.0
+      }
+    },
+    "Custom_eb2c88ce": {
+      "name": "Custom_eb2c88ce",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6727,
+        "Vd": 47.3
+      }
+    },
+    "Custom_c72e2c08": {
+      "name": "Custom_c72e2c08",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.4675,
+        "Vd": 65.7
+      }
+    },
+    "Custom_c336f1b7": {
+      "name": "Custom_c336f1b7",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.689,
+        "Vd": 31.0
+      }
+    },
+    "Custom_8e2a6858": {
+      "name": "Custom_8e2a6858",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6375,
+        "Vd": 56.1
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "aba38eac-3ee2-448c-b9e4-99028452ca5d",
+      "name": "1-2",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -99.30000305175781
+        }
+      },
+      "surfaces": [
+        {
+          "id": "04a45f6e-8d00-4ef7-ae88-03167892721d",
+          "semi_aperture": 35.0,
+          "form": {
+            "type": "sphere",
+            "radius": 65.0
+          },
+          "thickness": 10.5
+        },
+        {
+          "id": "fa500327-1979-4f5d-a149-fab698fa1f52",
+          "semi_aperture": 35.0,
+          "form": {
+            "type": "sphere",
+            "radius": 416.7699890136719
+          },
+          "thickness": 6.5
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_8e2a6858"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "dd31a7d4-5875-426e-a0e6-f150cce303be",
+      "name": "3-4-5-6",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -82.30000305175781
+        }
+      },
+      "surfaces": [
+        {
+          "id": "77502132-ebef-4c1f-b785-b679363559be",
+          "semi_aperture": 28.0,
+          "form": {
+            "type": "sphere",
+            "radius": 37.2599983215332
+          },
+          "thickness": 11.699999809265137
+        },
+        {
+          "id": "f244bee3-69df-4e78-bf2c-adad8277060f",
+          "semi_aperture": 25.0,
+          "form": {
+            "type": "sphere",
+            "radius": 104.33999633789062
+          },
+          "thickness": 7.599999904632568
+        },
+        {
+          "id": "c461b1eb-4773-4dac-ba41-7ffc60bfec78",
+          "semi_aperture": 25.0,
+          "form": {
+            "type": "sphere",
+            "radius": -247.0
+          },
+          "thickness": 1.899999976158142
+        },
+        {
+          "id": "744e978e-a6b5-40d7-9063-4efed4d7e687",
+          "semi_aperture": 18.0,
+          "form": {
+            "type": "sphere",
+            "radius": 22.139999389648438
+          },
+          "thickness": 13.900005340576172
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_eb2c88ce"
+        },
+        {
+          "glass": "Custom_c72e2c08"
+        },
+        {
+          "glass": "Custom_c336f1b7"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "830431a9-60aa-4442-9620-90b88f343304",
+      "name": "7-8-9-10",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -47.20000183582306
+        }
+      },
+      "surfaces": [
+        {
+          "id": "fbe9d82e-b821-407b-a0f0-1a9dfb981396",
+          "semi_aperture": 18.0,
+          "form": {
+            "type": "sphere",
+            "radius": 1904.0
+          },
+          "thickness": 3.4000000953674316
+        },
+        {
+          "id": "fe37a762-f835-45ed-aed6-5160266d857d",
+          "semi_aperture": 18.0,
+          "form": {
+            "type": "sphere",
+            "radius": 59.849998474121094
+          },
+          "thickness": 22.399999618530273
+        },
+        {
+          "id": "82646393-68df-411e-8abe-0f11ed70d25c",
+          "semi_aperture": 18.0,
+          "form": {
+            "type": "sphere",
+            "radius": -22.059999465942383
+          },
+          "thickness": 8.399999618530273
+        },
+        {
+          "id": "4ba22004-c0aa-46a3-9a6c-080f50087fa8",
+          "semi_aperture": 24.0,
+          "form": {
+            "type": "sphere",
+            "radius": -89.05999755859375
+          },
+          "thickness": 35.821006774902344
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_923cfbf4"
+        },
+        {
+          "glass": "Custom_d84b5175"
+        },
+        {
+          "glass": "Custom_5ff09bbd"
+        }
+      ]
+    }
+  ],
+  "pivots": []
+}

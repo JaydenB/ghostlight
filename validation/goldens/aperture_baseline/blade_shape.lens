@@ -1,0 +1,340 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {
+    "name": "blade_shape",
+    "notes": "Deformed-stop regression fixture: double_gauss with a 9-blade stop carrying every blade control at once (curvature, twist, notch, notch angle). The plain hex fixtures pin the untouched polygon path; this one is the only lens in the baseline set that exercises the deformed branch, so a regression there shows up as a pixel diff."
+  },
+  "glass_catalogue": {
+    "Schott_N-BK7": {
+      "name": "N-BK7",
+      "catalogue_ref": "Schott:N-BK7",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.03961212,
+          0.231792344,
+          1.01046945
+        ],
+        "C": [
+          0.00600069867,
+          0.0200179144,
+          103.560653
+        ]
+      }
+    },
+    "Schott_SF5": {
+      "name": "SF5",
+      "catalogue_ref": "Schott:SF5",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.46141885,
+          0.247713019,
+          0.949995832
+        ],
+        "C": [
+          0.0111826126,
+          0.0508594669,
+          112.041888
+        ]
+      }
+    },
+    "Ohara_APL1": {
+      "name": "APL1",
+      "catalogue_ref": "Ohara:APL1",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.517277,
+        "Vd": 69.563209
+      }
+    },
+    "Ohara_S-BAH11": {
+      "name": "S-BAH11",
+      "catalogue_ref": "Ohara:S-BAH11",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.5713886,
+          0.147869313,
+          1.28092846
+        ],
+        "C": [
+          0.00910807936,
+          0.0402401684,
+          130.399367
+        ]
+      }
+    },
+    "Ohara_S-LAM3": {
+      "name": "S-LAM3",
+      "catalogue_ref": "Ohara:S-LAM3",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.64258713,
+          0.23963461,
+          1.22483026
+        ],
+        "C": [
+          0.0086824602,
+          0.0351226242,
+          116.604369
+        ]
+      }
+    },
+    "Schott_AF32ECO": {
+      "name": "AF32ECO",
+      "catalogue_ref": "Schott:AF32ECO",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.11332955,
+          0.141527282,
+          0.860743147
+        ],
+        "C": [
+          0.00707493977,
+          0.0225358637,
+          90.1552652
+        ]
+      }
+    },
+    "Schott_N-SF5": {
+      "name": "N-SF5",
+      "catalogue_ref": "Schott:N-SF5",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.52481889,
+          0.187085527,
+          1.42729015
+        ],
+        "C": [
+          0.011254756,
+          0.0588995392,
+          129.141675
+        ]
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "2b4a334c-46b7-4730-ad08-5de15ec463ff",
+      "name": "Singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -110.0
+        }
+      },
+      "surfaces": [
+        {
+          "id": "0e2724da-8eed-43a8-945d-0558c5fc98e3",
+          "semi_aperture": 33.0,
+          "form": {
+            "type": "sphere",
+            "radius": 75.05000305175781
+          },
+          "thickness": 9.0
+        },
+        {
+          "id": "7398a527-3dba-45b8-9862-2507c8acd19f",
+          "semi_aperture": 33.0,
+          "form": {
+            "type": "sphere",
+            "radius": 270.70001220703125
+          },
+          "thickness": 11.0
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-LAM3"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "79296717-fb87-4ca1-b7e7-825d2a3f96bd",
+      "name": "Doublet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -90.0
+        }
+      },
+      "surfaces": [
+        {
+          "id": "e8558e0b-68ee-4344-90cf-5f6212f66917",
+          "semi_aperture": 27.5,
+          "form": {
+            "type": "sphere",
+            "radius": 39.27000045776367
+          },
+          "thickness": 16.510000228881836
+        },
+        {
+          "id": "2863df49-94da-4363-a419-1512c7418359",
+          "semi_aperture": 24.5,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "thickness": 2.0
+        },
+        {
+          "id": "238e1522-96d5-485c-9067-c157c9605802",
+          "semi_aperture": 19.5,
+          "form": {
+            "type": "sphere",
+            "radius": 25.649999618530273
+          },
+          "thickness": 11.489997863769531
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-BAH11"
+        },
+        {
+          "glass": "Schott_N-SF5"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "2d3079dd-5d6f-4c09-a7b5-59e506337894",
+      "name": "Aperture Stop",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -60.00000190734863
+        }
+      },
+      "surfaces": [
+        {
+          "id": "bf0b6370-3cd8-4b37-ac4e-4510f47ff9a9",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "is_stop": true,
+          "thickness": 10.0,
+          "modifiers": [
+            {
+              "type": "aperture",
+              "shape": "polygon",
+              "blades": 9,
+              "curvature": -0.44999998807907104,
+              "twist": 0.699999988079071,
+              "notch_deg": 18.000000500895634,
+              "notch_angle_deg": 12.000000333930423
+            }
+          ]
+        }
+      ],
+      "materials": []
+    },
+    {
+      "type": "element",
+      "id": "9e2fa95d-e183-4e14-a16e-54b0160852eb",
+      "name": "Doublet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -50.00000190734863
+        }
+      },
+      "surfaces": [
+        {
+          "id": "c315f7c1-ed96-49b0-aa48-80c61881474e",
+          "semi_aperture": 18.5,
+          "form": {
+            "type": "sphere",
+            "radius": -31.8700008392334
+          },
+          "thickness": 7.03000020980835
+        },
+        {
+          "id": "33b809fd-fff0-4f7a-930b-aee5ac935462",
+          "semi_aperture": 21.0,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "thickness": 8.979999542236328
+        },
+        {
+          "id": "316d1e40-6b53-4b6a-81af-1868f1f55ee1",
+          "semi_aperture": 21.0,
+          "form": {
+            "type": "sphere",
+            "radius": -43.5099983215332
+          },
+          "thickness": 13.990001678466797
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Schott_N-SF5"
+        },
+        {
+          "glass": "Ohara_S-LAM3"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "7cc9fafb-25e4-4ac0-97a5-61bdc3a21e90",
+      "name": "Singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -20.000000476837158
+        }
+      },
+      "surfaces": [
+        {
+          "id": "98505a03-5018-44fa-ab7f-0bf7c34d2609",
+          "semi_aperture": 23.0,
+          "form": {
+            "type": "sphere",
+            "radius": 221.13999938964844
+          },
+          "thickness": 7.980000019073486
+        },
+        {
+          "id": "b32c6a63-2265-4d6b-9af1-073b416da780",
+          "semi_aperture": 23.0,
+          "form": {
+            "type": "sphere",
+            "radius": -88.7920913696289
+          },
+          "thickness": 54.1055908203125
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Ohara_S-BAH11"
+        }
+      ]
+    }
+  ],
+  "pivots": []
+}

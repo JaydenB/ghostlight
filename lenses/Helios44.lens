@@ -1,0 +1,316 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {
+    "name": "Helios 44 58mm f/2",
+    "description": "Biotar-derived double Gauss, well known for its swirled out-of-focus rendering.",
+    "focal_length_mm": 58.0
+  },
+  "glass_catalogue": {
+    "Schott_N-BK7": {
+      "name": "N-BK7",
+      "catalogue_ref": "Schott:N-BK7",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.03961212,
+          0.231792344,
+          1.01046945
+        ],
+        "C": [
+          0.00600069867,
+          0.0200179144,
+          103.560653
+        ]
+      }
+    },
+    "Custom_8ebe2f0d": {
+      "name": "Custom_8ebe2f0d",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.67102,
+        "Vd": 47.28
+      }
+    },
+    "Custom_380fabe3": {
+      "name": "Custom_380fabe3",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.61309,
+        "Vd": 60.58
+      }
+    },
+    "Schott_SF5": {
+      "name": "SF5",
+      "catalogue_ref": "Schott:SF5",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.46141885,
+          0.247713019,
+          0.949995832
+        ],
+        "C": [
+          0.0111826126,
+          0.0508594669,
+          112.041888
+        ]
+      }
+    },
+    "Custom_abe6f85d": {
+      "name": "Custom_abe6f85d",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.57842,
+        "Vd": 41.11
+      }
+    },
+    "Custom_54261f6a": {
+      "name": "Custom_54261f6a",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.61309,
+        "Vd": 60.58
+      }
+    },
+    "Custom_98a585aa": {
+      "name": "Custom_98a585aa",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.61309,
+        "Vd": 60.58
+      }
+    },
+    "Custom_e53ac255": {
+      "name": "Custom_e53ac255",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.57842,
+        "Vd": 41.11
+      }
+    },
+    "Custom_f4fedef5": {
+      "name": "Custom_f4fedef5",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.61309,
+        "Vd": 60.58
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "141339cc-0ef1-424d-944f-770fa8855587",
+      "name": "1-2",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -89.90499877929688
+        }
+      },
+      "surfaces": [
+        {
+          "id": "8f04751e-7a2c-4078-9755-37cb14d57605",
+          "semi_aperture": 14.75,
+          "form": {
+            "type": "sphere",
+            "radius": 38.06999969482422
+          },
+          "thickness": 4.809999942779541
+        },
+        {
+          "id": "91a1533d-e1ca-4ea3-a1f8-f2542a30a0ee",
+          "semi_aperture": 14.75,
+          "form": {
+            "type": "sphere",
+            "radius": 136.36500549316406
+          },
+          "thickness": 2.2600021362304688
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_f4fedef5"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "f58a34b2-60af-4cc5-9488-f02b25b6d647",
+      "name": "3-4-5",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -82.83499670028687
+        }
+      },
+      "surfaces": [
+        {
+          "id": "36f30581-6f0e-40df-8d89-4430cfdb0158",
+          "semi_aperture": 13.0,
+          "form": {
+            "type": "sphere",
+            "radius": 25.329999923706055
+          },
+          "thickness": 9.069999694824219
+        },
+        {
+          "id": "7a05b3fa-4c64-4a6a-a093-543c8c2e5c85",
+          "semi_aperture": 13.0,
+          "form": {
+            "type": "sphere",
+            "radius": -124.2249984741211
+          },
+          "thickness": 1.309999942779541
+        },
+        {
+          "id": "6f786e25-b480-495c-b8ff-d78718eb8e34",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": 15.994999885559082
+          },
+          "thickness": 4.665008544921875
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_98a585aa"
+        },
+        {
+          "glass": "Custom_e53ac255"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "6ad711d9-e0d1-4de4-82f0-b63d83eb22c4",
+      "name": "Aperture Stop",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -67.78999614715576
+        }
+      },
+      "surfaces": [
+        {
+          "id": "c0cb4f76-b671-4b3d-bd11-f449ed357e31",
+          "semi_aperture": 9.699999809265137,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "is_stop": true,
+          "thickness": 4.664997100830078
+        }
+      ],
+      "materials": []
+    },
+    {
+      "type": "element",
+      "id": "fa84ada6-6e7c-4b7c-ab25-95183f80d689",
+      "name": "6-7-8",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -63.12499523162842
+        }
+      },
+      "surfaces": [
+        {
+          "id": "f1db28bf-c655-4ec1-8be9-21d43acbb564",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": -16.6200008392334
+          },
+          "thickness": 1.3200000524520874
+        },
+        {
+          "id": "74cc46b2-b858-45b3-b0ad-e48464d5348b",
+          "semi_aperture": 11.0,
+          "form": {
+            "type": "sphere",
+            "radius": 66.08499908447266
+          },
+          "thickness": 6.25
+        },
+        {
+          "id": "39a5748f-52b3-4837-a430-a02c292ea9b4",
+          "semi_aperture": 11.0,
+          "form": {
+            "type": "sphere",
+            "radius": -22.209999084472656
+          },
+          "thickness": 0.5
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_abe6f85d"
+        },
+        {
+          "glass": "Custom_54261f6a"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "dfff0284-8e82-4d2d-9dc9-9b26241a7fec",
+      "name": "9-10",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -55.05499517917633
+        }
+      },
+      "surfaces": [
+        {
+          "id": "fe9bde55-d97b-41a5-86d2-f5eb4b83489c",
+          "semi_aperture": 12.5,
+          "form": {
+            "type": "sphere",
+            "radius": 191.5399932861328
+          },
+          "thickness": 4.940000057220459,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 2
+            }
+          ]
+        },
+        {
+          "id": "8f47a57d-11be-4200-9205-aed363405b86",
+          "semi_aperture": 12.5,
+          "form": {
+            "type": "sphere",
+            "radius": -52.724998474121094
+          },
+          "thickness": 37.964176177978516
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_8ebe2f0d"
+        }
+      ]
+    }
+  ],
+  "pivots": []
+}

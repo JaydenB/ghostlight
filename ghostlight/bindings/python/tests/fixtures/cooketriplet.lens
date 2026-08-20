@@ -1,0 +1,193 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {
+    "name": "Cooke Triplet 50mm f/3.5",
+    "focal_length_mm": 50.0
+  },
+  "glass_catalogue": {
+    "G_ND1.6110_VD58.90": {
+      "name": "G_ND1.6110_VD58.90",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.611,
+        "Vd": 58.9
+      }
+    },
+    "G_ND1.6490_VD33.80": {
+      "name": "G_ND1.6490_VD33.80",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.649,
+        "Vd": 33.8
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "2025f05d-694f-4c88-a9a0-75a1f91d2af3",
+      "name": "Singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0,
+          "y": 0,
+          "z": -61.0
+        }
+      },
+      "surfaces": [
+        {
+          "id": "cadbfae1-a8f1-4fd0-af21-a7637164ffe6",
+          "semi_aperture": 12.0,
+          "form": {
+            "type": "sphere",
+            "radius": 26.67
+          },
+          "thickness": 4.0,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 1
+            }
+          ]
+        },
+        {
+          "id": "e30ad446-20bc-4579-a622-fe62f1a14766",
+          "semi_aperture": 12.0,
+          "form": {
+            "type": "sphere",
+            "radius": -200.0
+          },
+          "thickness": 2.0
+        }
+      ],
+      "materials": [
+        {
+          "glass": "G_ND1.6110_VD58.90"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "7b53845e-a957-4043-bb37-9ec304fe5951",
+      "name": "Aperture Stop",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0,
+          "y": 0,
+          "z": -55.0
+        }
+      },
+      "surfaces": [
+        {
+          "id": "ef7dfda3-caea-48bf-bea7-b3bdfbae4941",
+          "semi_aperture": 8.0,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "is_stop": true,
+          "thickness": 4.0
+        }
+      ],
+      "materials": []
+    },
+    {
+      "type": "element",
+      "id": "f6f70afc-c568-4ce6-937e-140f20094f05",
+      "name": "Singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0,
+          "y": 0,
+          "z": -51.0
+        }
+      },
+      "surfaces": [
+        {
+          "id": "24841f4f-5719-4e54-bb27-edfebe6a30b1",
+          "semi_aperture": 9.0,
+          "form": {
+            "type": "sphere",
+            "radius": -18.39
+          },
+          "thickness": 1.0,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 1
+            }
+          ]
+        },
+        {
+          "id": "5f115614-6a64-41d3-8efc-f7c509386160",
+          "semi_aperture": 9.0,
+          "form": {
+            "type": "sphere",
+            "radius": 18.39
+          },
+          "thickness": 2.0
+        }
+      ],
+      "materials": [
+        {
+          "glass": "G_ND1.6490_VD33.80"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "28ff6805-a55b-42b6-9d12-d1707c4b0b9f",
+      "name": "Singlet",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0,
+          "y": 0,
+          "z": -48.0
+        }
+      },
+      "surfaces": [
+        {
+          "id": "d31b491b-7207-4a9d-b367-a464a3ed4edc",
+          "semi_aperture": 12.0,
+          "form": {
+            "type": "sphere",
+            "radius": 80.0
+          },
+          "thickness": 4.0,
+          "modifiers": [
+            {
+              "type": "coating",
+              "model": "simple",
+              "ar_layers": 1
+            }
+          ]
+        },
+        {
+          "id": "ee2c0a43-c7a8-4048-b8c3-c264585488b7",
+          "semi_aperture": 12.0,
+          "form": {
+            "type": "sphere",
+            "radius": -26.67
+          },
+          "thickness": 44.0
+        }
+      ],
+      "materials": [
+        {
+          "glass": "G_ND1.6110_VD58.90"
+        }
+      ]
+    }
+  ],
+  "pivots": []
+}

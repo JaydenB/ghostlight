@@ -1,0 +1,1038 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/JaydenB/ghostlight/main/lenses/schema/lens.schema.json",
+  "title": "Ghostlight Optical System",
+  "description": "JSON Schema for the `ghostlight-optical` lens file format. One format, one version: the loader accepts major 1 only, and the writer emits it unconditionally.",
+  "type": "object",
+  "required": [
+    "format",
+    "version",
+    "metadata",
+    "glass_catalogue",
+    "optical_system",
+    "pivots"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "type": "string",
+      "const": "ghostlight-optical",
+      "description": "Format identifier. Must be the literal string `ghostlight-optical`."
+    },
+    "version": {
+      "$ref": "#/$defs/version"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Provenance. The loader reads `name` (display name) and the optional `focal_length_mm` hint; everything else is informational and preserved verbatim across a load/save round-trip. `title` is not a synonym for `name`; the display name is always `name`.",
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Display name. Read by the loader."
+        },
+        "description": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string",
+          "description": "Where the prescription came from (patent, catalogue, measurement)."
+        },
+        "focal_length_mm": {
+          "type": "number",
+          "description": "Optional EFL hint, read by the loader so callers that need a value before a paraxial trace lands have one."
+        }
+      }
+    },
+    "glass_catalogue": {
+      "type": "object",
+      "description": "Inline glass catalogue. Keys are catalogue keys referenced from `materials[i].glass`.",
+      "additionalProperties": {
+        "$ref": "#/$defs/glass"
+      }
+    },
+    "optical_system": {
+      "type": "array",
+      "description": "Ordered source-to-image-plane sequence of elements. An `element` with N surfaces + N-1 materials models a piece of glass (singlet, cemented doublet/triplet, etc.); a 1-surface 0-material element is a first-class stop, mirror, or interface.",
+      "items": {
+        "$ref": "#/$defs/element"
+      }
+    },
+    "pivots": {
+      "type": "array",
+      "description": "Post-process rig layer. Each pivot translates and/or rotates a named set of elements around a pivot point; the C++ loader composes pivot transforms onto the targeted elements' transforms before flattening surfaces. Multiple pivots on the same element compose in array order. The optical system is the bind pose; pivots are the rig.",
+      "items": {
+        "$ref": "#/$defs/pivot"
+      }
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "object",
+      "required": [
+        "major",
+        "minor"
+      ],
+      "additionalProperties": false,
+      "description": "The lens format version. `major` is gated by the loader; a newer `minor` loads with a warning and unknown fields ignored. Mirrors LENS_FORMAT_MAJOR / LENS_FORMAT_MINOR in ghostlight/src/optical_system.h.",
+      "properties": {
+        "major": {
+          "type": "integer",
+          "const": 1
+        },
+        "minor": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID (any standard form). Used for stable cross-referencing such as ghost identification and pivot membership.",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+    },
+    "transform": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "absolute",
+                "relative_to_preceding"
+              ],
+              "default": "absolute",
+              "description": "Editor hint. `absolute` (default): x/y/z are world-frame. `relative_to_preceding`: z is interpreted as a delta from the preceding element's resolved absolute z (x/y are always absolute; rotation and decenter on the preceding element are ignored). The loader always flattens to absolute before tracing. First element with `relative_to_preceding` is a no-op (treated as absolute) and emits a warning."
+            },
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "rotation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "tilt_x": {
+              "type": "number"
+            },
+            "tilt_y": {
+              "type": "number"
+            },
+            "roll": {
+              "type": "number"
+            }
+          }
+        },
+        "pivot": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Centre of rotation, in the element's own local frame, relative to the element origin (its first surface vertex). Omitted or all-zero rotates about that front vertex, which is the historical behaviour. Applies to `rotation` only — it does not move the element, and it does not enter the nominal axial bookkeeping (relative position chaining, inter-element air gaps, sensor rebase), all of which stay on the untilted layout. Distinct from the top-level `pivots[]` rig, which is a group-level post-process layer.",
+          "properties": {
+            "x": {
+              "type": "number",
+              "default": 0
+            },
+            "y": {
+              "type": "number",
+              "default": 0
+            },
+            "z": {
+              "type": "number",
+              "default": 0
+            }
+          }
+        }
+      }
+    },
+    "glass": {
+      "type": "object",
+      "required": [
+        "dispersion"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "catalogue_ref": {
+          "type": "string",
+          "description": "Provenance metadata only (e.g. `Schott:N-BK7`). Not a live reference."
+        },
+        "dispersion": {
+          "$ref": "#/$defs/dispersion"
+        }
+      }
+    },
+    "dispersion": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/dispersion_sellmeier"
+        },
+        {
+          "$ref": "#/$defs/dispersion_abbe"
+        }
+      ]
+    },
+    "dispersion_sellmeier": {
+      "type": "object",
+      "required": [
+        "model",
+        "B",
+        "C"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "const": "sellmeier"
+        },
+        "B": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "Sellmeier B coefficients."
+        },
+        "C": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "Sellmeier C coefficients in micrometres squared."
+        }
+      }
+    },
+    "dispersion_abbe": {
+      "type": "object",
+      "required": [
+        "model",
+        "nd",
+        "Vd"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "const": "abbe"
+        },
+        "nd": {
+          "type": "number",
+          "minimum": 1.0
+        },
+        "Vd": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "element": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "surfaces",
+        "materials"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "element"
+        },
+        "id": {
+          "$ref": "#/$defs/uuid",
+          "description": "Stable UUID. Identity is by UUID, not array position: the writer reassembles the flat surface array back into elements through these ids. A document that omits them loads (the loader synthesizes stable placeholders) but must not be authored that way."
+        },
+        "name": {
+          "type": "string"
+        },
+        "transform": {
+          "$ref": "#/$defs/transform"
+        },
+        "surfaces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/surface"
+          },
+          "minItems": 1
+        },
+        "materials": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/material"
+          }
+        }
+      },
+      "description": "An element groups N surfaces sharing one rigid-body transform. N surfaces + N-1 materials models a real piece of glass (singlet, cemented doublet/triplet, ...). 1 surface + 0 materials models a stop, mirror, or interface. The loader enforces `surfaces.length == materials.length + 1`."
+    },
+    "material": {
+      "type": "object",
+      "required": [
+        "glass"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "glass": {
+          "type": "string",
+          "description": "Key into `glass_catalogue`. The literal strings `air` / `AIR` are reserved and treated as vacuum / air (n = 1)."
+        }
+      }
+    },
+    "surface": {
+      "type": "object",
+      "required": [
+        "id",
+        "semi_aperture",
+        "form"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/uuid",
+          "description": "Stable UUID. Identity is by UUID, not array position: the writer reassembles the flat surface array back into elements through these ids. A document that omits them loads (the loader synthesizes stable placeholders) but must not be authored that way."
+        },
+        "semi_aperture": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "is_stop": {
+          "type": "boolean",
+          "default": false
+        },
+        "is_active": {
+          "type": "boolean",
+          "default": true,
+          "description": "False mutes the surface: it is skipped by the tracer and excluded from ghost pairs. Omitted when true. This field was read and written for a long time while being absent from the schema, which -- with `additionalProperties: false` -- made every muted-surface file schema-invalid."
+        },
+        "thickness": {
+          "type": "number",
+          "description": "Axial distance to the next surface within the same element, in mm. Omitted on the last surface of an element."
+        },
+        "form": {
+          "$ref": "#/$defs/form"
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/modifier"
+          },
+          "description": "Modifier stack. At most one coating modifier is honoured per surface (last one wins); a surface is either a reflectance coating or an attenuator, not both."
+        }
+      }
+    },
+    "form": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/form_sphere"
+        },
+        {
+          "$ref": "#/$defs/form_asphere"
+        },
+        {
+          "$ref": "#/$defs/form_cylindrical"
+        }
+      ]
+    },
+    "form_sphere": {
+      "type": "object",
+      "required": [
+        "type",
+        "radius"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "sphere"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Signed radius of curvature in mm. 0 means a flat / plane surface. Positive radius = centre of curvature behind the surface."
+        }
+      }
+    },
+    "form_asphere": {
+      "type": "object",
+      "required": [
+        "type",
+        "radius",
+        "conic_constant"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "asphere"
+        },
+        "radius": {
+          "type": "number"
+        },
+        "conic_constant": {
+          "type": "number",
+          "description": "Conic constant K. K = 0 + empty terms = sphere; K = -1 + empty terms = paraboloid."
+        },
+        "terms": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "Polynomial sag terms starting at A4 (r^4). A2 is implicit in radius + conic_constant per ISO 10110."
+        }
+      }
+    },
+    "form_cylindrical": {
+      "type": "object",
+      "required": [
+        "type",
+        "radius",
+        "axis"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "cylindrical"
+        },
+        "radius": {
+          "type": "number"
+        },
+        "axis": {
+          "type": "string",
+          "enum": [
+            "x",
+            "y"
+          ],
+          "description": "Cylinder axis orientation."
+        }
+      }
+    },
+    "modifier": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/modifier_coating_simple"
+        },
+        {
+          "$ref": "#/$defs/modifier_coating_artist"
+        },
+        {
+          "$ref": "#/$defs/modifier_coating_spectral"
+        },
+        {
+          "$ref": "#/$defs/modifier_coating_angular"
+        },
+        {
+          "$ref": "#/$defs/modifier_coating_spectral_angular"
+        },
+        {
+          "$ref": "#/$defs/modifier_coating_layers"
+        },
+        {
+          "$ref": "#/$defs/modifier_coating_attenuator_gaussian"
+        },
+        {
+          "$ref": "#/$defs/modifier_aperture_circular"
+        },
+        {
+          "$ref": "#/$defs/modifier_aperture_polygon"
+        },
+        {
+          "$ref": "#/$defs/modifier_aperture_image"
+        }
+      ]
+    },
+    "modifier_coating_simple": {
+      "type": "object",
+      "required": [
+        "type",
+        "model"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "coating"
+        },
+        "model": {
+          "const": "simple"
+        },
+        "ar_layers": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0,
+          "description": "AR coating layer count. 0 = uncoated, 1 = single-layer MgF2, 2+ = multi-coat approximation. Omitted is equivalent to 0."
+        }
+      }
+    },
+    "modifier_coating_artist": {
+      "type": "object",
+      "required": [
+        "type",
+        "model",
+        "tint"
+      ],
+      "additionalProperties": false,
+      "description": "Artist-driven coating: an RGB tint plus reflection strength, synthesized at trace time into a smooth spectral reflectance (Gaussian basis at 650/550/450 nm, partition-of-unity normalized). White tint = flat R(lambda) = strength. Angle-independent by design; stored as intent so it stays editable.",
+      "properties": {
+        "type": {
+          "const": "coating"
+        },
+        "model": {
+          "const": "artist"
+        },
+        "tint": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "Ghost tint as [r, g, b] in [0,1]."
+        },
+        "strength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.04,
+          "description": "Peak reflectance. 0.04 is roughly bare glass; AR coats are 0.005-0.02."
+        }
+      }
+    },
+    "modifier_coating_spectral": {
+      "type": "object",
+      "required": [
+        "type",
+        "model",
+        "data"
+      ],
+      "additionalProperties": false,
+      "description": "Empirical wavelength-dependent reflectance table (e.g. manufacturer spectral data). Linear interpolation between samples.",
+      "properties": {
+        "type": {
+          "const": "coating"
+        },
+        "model": {
+          "const": "spectral"
+        },
+        "out_of_range": {
+          "type": "string",
+          "enum": [
+            "clamp",
+            "discard"
+          ],
+          "default": "clamp",
+          "description": "Behaviour outside the table range: `clamp` uses the nearest edge value; `discard` kills the ray's contribution (strict / scientific use)."
+        },
+        "data": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "lambda_nm",
+              "r"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "lambda_nm": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "r": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "modifier_coating_angular": {
+      "type": "object",
+      "required": [
+        "type",
+        "model",
+        "data"
+      ],
+      "additionalProperties": false,
+      "description": "Incidence-angle-dependent reflectance table. Angles are measured in the reference medium given by `angle_ref_ior` (default air); lookups from inside glass convert via the Snell invariant n*sin(theta).",
+      "properties": {
+        "type": {
+          "const": "coating"
+        },
+        "model": {
+          "const": "angular"
+        },
+        "out_of_range": {
+          "type": "string",
+          "enum": [
+            "clamp",
+            "discard"
+          ],
+          "default": "clamp"
+        },
+        "angle_ref_ior": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 1.0,
+          "description": "IOR of the medium the angle axis is measured in (1.0 = air, the manufacturer-data convention)."
+        },
+        "data": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "angle_deg",
+              "r"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "angle_deg": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 90
+              },
+              "r": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "modifier_coating_spectral_angular": {
+      "type": "object",
+      "required": [
+        "type",
+        "model",
+        "wavelengths_nm",
+        "angles_deg",
+        "r"
+      ],
+      "additionalProperties": false,
+      "description": "2-D reflectance table over wavelength x incidence angle (bilinear interpolation). `r` rows correspond to wavelengths, columns to angles. The most complete empirical coating representation.",
+      "properties": {
+        "type": {
+          "const": "coating"
+        },
+        "model": {
+          "const": "spectral_angular"
+        },
+        "out_of_range": {
+          "type": "string",
+          "enum": [
+            "clamp",
+            "discard"
+          ],
+          "default": "clamp"
+        },
+        "angle_ref_ior": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 1.0,
+          "description": "IOR of the medium the angle axis is measured in (1.0 = air)."
+        },
+        "wavelengths_nm": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "description": "Sorted ascending."
+        },
+        "angles_deg": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 90
+          },
+          "description": "Sorted ascending."
+        },
+        "r": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      }
+    },
+    "modifier_coating_layers": {
+      "type": "object",
+      "required": [
+        "type",
+        "model",
+        "layers"
+      ],
+      "additionalProperties": false,
+      "description": "Physical thin-film layer stack, evaluated at load time via the Transfer Matrix Method and baked to a wavelength x angle reflectance table (the tracer never runs TMM). Layers are ordered from the outer medium inward; the substrate is the lens glass. The file stays self-contained: each layer embeds its own n,k table inline. This tier used to be discriminated by the mere presence of `layers` with no `model` key -- the one coating you could not identify without inspecting the payload.",
+      "properties": {
+        "type": {
+          "const": "coating"
+        },
+        "model": {
+          "const": "layers"
+        },
+        "layers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "thickness_nm",
+              "nk_table"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "material": {
+                "type": "string",
+                "description": "Display name (e.g. `MgF2`). Provenance only; the physics comes from nk_table."
+              },
+              "thickness_nm": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "nk_table": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "lambda_um",
+                    "n"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "lambda_um": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "n": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "k": {
+                      "type": "number",
+                      "minimum": 0,
+                      "default": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "modifier_coating_attenuator_gaussian": {
+      "type": "object",
+      "required": [
+        "type",
+        "model",
+        "sigma"
+      ],
+      "additionalProperties": false,
+      "description": "Positional amplitude attenuator: a Gaussian transmission profile over the surface (apodization / pupil shaping). Applies alongside bare-Fresnel reflectance; a surface is either an attenuator or a reflectance coating.",
+      "properties": {
+        "type": {
+          "const": "coating"
+        },
+        "model": {
+          "const": "attenuator_gaussian"
+        },
+        "sigma": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Gaussian sigma in mm."
+        },
+        "attenuation_background": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        },
+        "attenuation_peak": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        },
+        "decenter_x": {
+          "type": "number",
+          "default": 0
+        },
+        "decenter_y": {
+          "type": "number",
+          "default": 0
+        }
+      }
+    },
+    "modifier_aperture_circular": {
+      "type": "object",
+      "required": [
+        "type",
+        "shape"
+      ],
+      "description": "Circular aperture stop. The bounding radius is the surface's `semi_aperture`; with `aperture_aspect` != 1 the bound becomes an ellipse (X half-axis = semi_aperture * aperture_aspect, Y half-axis = semi_aperture).",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "aperture"
+        },
+        "shape": {
+          "const": "circular"
+        },
+        "aperture_aspect": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 1.0
+        }
+      }
+    },
+    "modifier_aperture_polygon": {
+      "type": "object",
+      "required": [
+        "type",
+        "shape",
+        "blades"
+      ],
+      "description": "Bladed aperture stop inscribed in the bounding ellipse. With no blade-shape fields it is the regular n-gon: the vertex circle has radius `semi_aperture` (i.e. angle 0° points at a vertex by default), `rotation_deg` rotates it, and `aperture_aspect` stretches the bounding ellipse along X. `curvature`, `twist`, `notch_deg` and `notch_angle_deg` deform the blade edge; all are optional and all default to 0, which reproduces the plain n-gon exactly. Blade tips stay on the vertex circle, so deforming changes how much area the stop encloses, never its bounding radius.",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "aperture"
+        },
+        "shape": {
+          "const": "polygon"
+        },
+        "blades": {
+          "type": "integer",
+          "minimum": 3
+        },
+        "rotation_deg": {
+          "type": "number",
+          "default": 0.0
+        },
+        "aperture_aspect": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 1.0
+        },
+        "curvature": {
+          "type": "number",
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "default": 0.0,
+          "description": "Blade-edge waist depth. 0 = straight chord (the plain n-gon), +1 = the circumscribed circle, negative scoops the edge inward and leaves the tips as spikes."
+        },
+        "twist": {
+          "type": "number",
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "default": 0.0,
+          "description": "Where the waist sits along the blade edge. 0 = centred (symmetric blades); the extremes drive it toward a tip, which is what makes the blade handed. +t and -t are mirror images."
+        },
+        "notch_deg": {
+          "type": "number",
+          "minimum": -45.0,
+          "maximum": 45.0,
+          "default": 0.0,
+          "description": "Tip facet depth, and by its sign which side the facet leans toward. NOMINAL degrees: the value is applied as a fraction of the blade's own sector, not as a literal angle, so the same setting gives a proportionally similar tooth at every blade count."
+        },
+        "notch_angle_deg": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 45.0,
+          "default": 0.0,
+          "description": "Skew of the tip facet: 0 cuts the corner symmetrically, 45 pushes the cut fully to one side. Nominal in the same sense as notch_deg, and inert while notch_deg is 0."
+        }
+      }
+    },
+    "modifier_aperture_image": {
+      "type": "object",
+      "required": [
+        "type",
+        "shape",
+        "image_path",
+        "semi_diameter"
+      ],
+      "description": "Bitmap-driven aperture stop. The parser records `image_path` and `semi_diameter` on the surface; pixel data is loaded by a caller-supplied helper (typically `OpticalSystem.load_aperture_images()` on the Python side). The image is sampled in [0,1] UV space mapped to a square of half-width `semi_diameter` mm in world space.",
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "const": "aperture"
+        },
+        "shape": {
+          "const": "image"
+        },
+        "image_path": {
+          "type": "string",
+          "description": "Path to the bitmap (PNG, single-channel float or 8-bit greyscale). Relative paths are resolved against the lens file's directory."
+        },
+        "semi_diameter": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "World-space radius (mm) at the image boundary. Becomes the surface's aperture_semi_diameter."
+        },
+        "aperture_aspect": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "default": 1.0
+        }
+      }
+    },
+    "pivot": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "elements"
+      ],
+      "additionalProperties": false,
+      "description": "Post-process rig entry. Translates and/or rotates a set of elements around a pivot point. Both translation and rotation are in scope. The loader composes pivot transforms onto each targeted element before flattening surfaces; multiple pivots on the same element compose in array order. `exposed` flags which offset attributes are artist-facing controls (UI sliders); coupled/curve controls are not modelled.",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "elements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          },
+          "minItems": 1,
+          "description": "Element IDs (UUIDs) this pivot acts on."
+        },
+        "pivot_point": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "centroid",
+                "manual"
+              ],
+              "default": "centroid",
+              "description": "`centroid`: pivot point is the arithmetic mean of the targeted elements' (resolved absolute) origin positions. `manual`: pivot point is taken verbatim from x/y/z."
+            },
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "offset": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "position": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "default": 0
+                },
+                "y": {
+                  "type": "number",
+                  "default": 0
+                },
+                "z": {
+                  "type": "number",
+                  "default": 0
+                }
+              }
+            },
+            "rotation": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "tilt_x": {
+                  "type": "number",
+                  "default": 0
+                },
+                "tilt_y": {
+                  "type": "number",
+                  "default": 0
+                },
+                "roll": {
+                  "type": "number",
+                  "default": 0
+                }
+              }
+            }
+          }
+        },
+        "exposed": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/exposed_attr"
+          }
+        }
+      }
+    },
+    "exposed_attr": {
+      "type": "object",
+      "required": [
+        "name",
+        "attr"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Artist-facing label (e.g. \"focus\", \"tilt\")."
+        },
+        "attr": {
+          "type": "string",
+          "enum": [
+            "offset.position.x",
+            "offset.position.y",
+            "offset.position.z",
+            "offset.rotation.tilt_x",
+            "offset.rotation.tilt_y",
+            "offset.rotation.roll"
+          ],
+          "description": "Dotted path into the pivot's `offset` block that this control writes to."
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

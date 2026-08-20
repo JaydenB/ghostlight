@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ghostlight-designer"
+version = "0.1.0"
+description = "PySide6 lens designer application for Ghostlight"
+requires-python = ">=3.9"
+dependencies = [
+    "PySide6>=6.4",
+    "ghostlight-optics",
+    # numpy is imported directly (viewtransform pipeline, panel display).
+    "numpy>=1.23",
+    # scipy.optimize.least_squares drives the optimization panel.
+    # The panel surfaces a friendly error when this isn't available, but
+    # the dependency is listed here so a fresh install pulls it in.
+    "scipy>=1.11",
+    # OpenColorIO powers the designer-wide ACES 2.0 display (view) transform in
+    # the render panels. >=2.4 for the ACES 2.0 builtin OCIO configs.
+    "opencolorio>=2.4",
+    # Animation export (source-flare Render dropdown): Pillow writes GIF / JPEG
+    # sequences; OpenEXR writes scene-linear EXR sequences. MOV export shells out
+    # to an ffmpeg binary detected on PATH at runtime (no Python dep), and both
+    # writers degrade gracefully with a message when unavailable.
+    "Pillow>=9.1",
+    "OpenEXR>=3.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/JaydenB/ghostlight"
+Issues = "https://github.com/JaydenB/ghostlight/issues"
+
+[project.scripts]
+ghostlight-designer = "ghostlight_designer.app:run"
+
+[tool.setuptools.packages.find]
+include = ["ghostlight_designer*"]
+
+[tool.setuptools.package-data]
+"ghostlight_designer.resources" = ["*.png", "*.svg"]
+"ghostlight_designer.resources.materials" = ["*.json", "README.md"]
+"ghostlight_designer.resources.coatings" = ["*.json"]
+"ghostlight_designer.resources.textures" = ["*.png", "README.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,87 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {
+    "name": "Dangling pivot reference"
+  },
+  "glass_catalogue": {
+    "BK7-ish": {
+      "name": "BK7-ish",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.5168,
+        "Vd": 64.17
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "11111111-1111-1111-1111-111111111111",
+      "name": "Only element",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0,
+          "y": 0,
+          "z": -10.0
+        }
+      },
+      "materials": [
+        {
+          "glass": "BK7-ish"
+        }
+      ],
+      "surfaces": [
+        {
+          "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0000",
+          "semi_aperture": 10.0,
+          "thickness": 3.0,
+          "form": {
+            "type": "sphere",
+            "radius": 40.0
+          }
+        },
+        {
+          "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaa0001",
+          "semi_aperture": 10.0,
+          "thickness": 7.0,
+          "form": {
+            "type": "sphere",
+            "radius": -40.0
+          }
+        }
+      ]
+    }
+  ],
+  "pivots": [
+    {
+      "id": "deadbeef-aaaa-bbbb-cccc-dddddddddddd",
+      "name": "Dangling",
+      "elements": [
+        "ffffffff-ffff-ffff-ffff-ffffffffffff"
+      ],
+      "pivot_point": {
+        "mode": "centroid",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "offset": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "rotation": {
+          "tilt_x": 0,
+          "tilt_y": 0,
+          "roll": 0
+        }
+      }
+    }
+  ]
+}

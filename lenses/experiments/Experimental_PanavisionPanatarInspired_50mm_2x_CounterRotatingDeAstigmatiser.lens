@@ -1,0 +1,587 @@
+{
+  "format": "ghostlight-optical",
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "metadata": {
+    "status": "research reconstruction; not a Panavision prescription",
+    "taking_lens": "spherical/Cooke_SpeedPancro_50mm_F2_US2959102A.lens",
+    "front_anamorph": "US2821110A, example 1 (anamorphic front, 50 mm EFL)",
+    "design_intent": "2x horizontal squeeze with a weak complementary cylindrical pair counter-rotated about a 45-degree bisector",
+    "name": "Panatar-inspired 50 mm 2x anamorphic reconstruction"
+  },
+  "glass_catalogue": {
+    "Schott_N-BK7": {
+      "name": "N-BK7",
+      "catalogue_ref": "Schott:N-BK7",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.03961212,
+          0.231792344,
+          1.01046945
+        ],
+        "C": [
+          0.00600069867,
+          0.0200179144,
+          103.560653
+        ]
+      }
+    },
+    "Custom_db56b703": {
+      "name": "Custom_db56b703",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6935,
+        "Vd": 53.5
+      }
+    },
+    "Custom_db59f277": {
+      "name": "Custom_db59f277",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6935,
+        "Vd": 53.5
+      }
+    },
+    "Schott_SF5": {
+      "name": "SF5",
+      "catalogue_ref": "Schott:SF5",
+      "dispersion": {
+        "model": "sellmeier",
+        "B": [
+          1.46141885,
+          0.247713019,
+          0.949995832
+        ],
+        "C": [
+          0.0111826126,
+          0.0508594669,
+          112.041888
+        ]
+      }
+    },
+    "Custom_3cbdb8d7": {
+      "name": "Custom_3cbdb8d7",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6935,
+        "Vd": 53.5
+      }
+    },
+    "Custom_24bada13": {
+      "name": "Custom_24bada13",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.7003,
+        "Vd": 30.28
+      }
+    },
+    "Custom_daa9f954": {
+      "name": "Custom_daa9f954",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6935,
+        "Vd": 53.5
+      }
+    },
+    "Custom_4b04d3d1": {
+      "name": "Custom_4b04d3d1",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6083,
+        "Vd": 39.58
+      }
+    },
+    "Custom_20b618a7": {
+      "name": "Custom_20b618a7",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6935,
+        "Vd": 53.5
+      }
+    },
+    "Custom_23c4581f": {
+      "name": "Custom_23c4581f",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6751,
+        "Vd": 31.9
+      }
+    },
+    "Custom_0020a941": {
+      "name": "Custom_0020a941",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.5091,
+        "Vd": 34.4
+      }
+    },
+    "Custom_990bc756": {
+      "name": "Custom_990bc756",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.6743,
+        "Vd": 32.0
+      }
+    },
+    "Custom_3356b240": {
+      "name": "Custom_3356b240",
+      "dispersion": {
+        "model": "abbe",
+        "nd": 1.5093,
+        "Vd": 64.5
+      }
+    }
+  },
+  "optical_system": [
+    {
+      "type": "element",
+      "id": "7e127864-8a23-470a-921e-31c29b5ec566",
+      "name": "Primary 2x anamorphic01",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -172.69879174232483
+        }
+      },
+      "surfaces": [
+        {
+          "id": "0328bda5-f135-4e4f-b154-0abee4358fe3",
+          "semi_aperture": 13.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 180.1895294189453,
+            "axis": "y"
+          },
+          "thickness": 4.098400115966797
+        },
+        {
+          "id": "d41dcd93-2d0b-41c9-a86b-58955bec1f47",
+          "semi_aperture": 13.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": -53.776893615722656,
+            "axis": "y"
+          },
+          "thickness": 2.016400098800659
+        },
+        {
+          "id": "2d024d2f-a20b-4f0b-b460-89dd0a8bbe68",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 18.916749954223633,
+            "axis": "y"
+          },
+          "thickness": 45.24589538574219
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_23c4581f"
+        },
+        {
+          "glass": "Custom_0020a941"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "b74c275e-5a6f-4a3a-a808-33c9d464929e",
+      "name": "Primary 2x anamorphic02",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -121.33809232711792
+        }
+      },
+      "surfaces": [
+        {
+          "id": "74ff9f4e-75db-487d-906e-b36fb29b0ac9",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": -87.54187774658203,
+            "axis": "y"
+          },
+          "thickness": 1.9179999828338623
+        },
+        {
+          "id": "8903372f-e5b8-4fb5-8967-4f186815960d",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 250.81826782226562,
+            "axis": "y"
+          },
+          "thickness": 3.295099973678589
+        },
+        {
+          "id": "e07a76a0-7fc4-4198-b7ca-a7367c843a15",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": -29.973491668701172,
+            "axis": "y"
+          },
+          "thickness": 10.0
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_990bc756"
+        },
+        {
+          "glass": "Custom_3356b240"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "80c52a30-e9ce-5784-8ee7-2191dbdbaa05",
+      "name": "Wallin-style positive astigmatizer",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -106.12499237060547
+        },
+        "rotation": {
+          "tilt_x": 0.0,
+          "tilt_y": 0.0,
+          "roll": 39.0
+        },
+        "pivot": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 1.5
+        }
+      },
+      "surfaces": [
+        {
+          "id": "bccd2d4d-4ec5-5c42-947d-a518fd9b471c",
+          "semi_aperture": 16.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 200.0,
+            "axis": "y"
+          },
+          "thickness": 3.0
+        },
+        {
+          "id": "97445dbe-a327-5f79-86d5-d23506f8fb7c",
+          "semi_aperture": 16.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 0.0,
+            "axis": "y"
+          },
+          "thickness": 1.0
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Schott_N-BK7"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "21bf1802-ba53-5ec1-9c38-7447588123e3",
+      "name": "Wallin-style negative astigmatizer",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -102.12499237060547
+        },
+        "rotation": {
+          "tilt_x": 0.0,
+          "tilt_y": 0.0,
+          "roll": 51.0
+        },
+        "pivot": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 1.5
+        }
+      },
+      "surfaces": [
+        {
+          "id": "c4023ea0-84bd-51c5-9907-a15fff44ab4f",
+          "semi_aperture": 16.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 0.0,
+            "axis": "y"
+          },
+          "thickness": 3.0
+        },
+        {
+          "id": "8c877798-488b-56af-8514-0e03314c6713",
+          "semi_aperture": 16.0,
+          "form": {
+            "type": "cylindrical",
+            "radius": 200.0,
+            "axis": "y"
+          },
+          "thickness": 12.0
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Schott_N-BK7"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "fc6b7d0f-9ac8-4bde-9011-56a550919627",
+      "name": "1-2",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -87.12499237060547
+        }
+      },
+      "surfaces": [
+        {
+          "id": "8cb560c8-7985-4d66-ba3b-28c4ed2b30cf",
+          "semi_aperture": 14.0,
+          "form": {
+            "type": "sphere",
+            "radius": 29.209999084472656
+          },
+          "thickness": 3.9749999046325684
+        },
+        {
+          "id": "f72055c3-82ad-47cd-b50e-6815b455c1a4",
+          "semi_aperture": 14.0,
+          "form": {
+            "type": "sphere",
+            "radius": 66.66500091552734
+          },
+          "thickness": 0.09999847412109375
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_20b618a7"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "d9170833-3ffa-47d2-8635-326ba9eb9dba",
+      "name": "3-4-5",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -83.0499939918518
+        }
+      },
+      "surfaces": [
+        {
+          "id": "94f14eb8-3aca-4c55-8166-96430ef6ba7f",
+          "semi_aperture": 11.0,
+          "form": {
+            "type": "sphere",
+            "radius": 20.469999313354492
+          },
+          "thickness": 5.300000190734863
+        },
+        {
+          "id": "647cfb5c-f9d9-4d0a-abca-56b4282ddf48",
+          "semi_aperture": 11.0,
+          "form": {
+            "type": "sphere",
+            "radius": 156.05499267578125
+          },
+          "thickness": 1.100000023841858
+        },
+        {
+          "id": "3b03b25c-bda6-4c0b-a034-6a63a8c0372f",
+          "semi_aperture": 9.0,
+          "form": {
+            "type": "sphere",
+            "radius": 12.9350004196167
+          },
+          "thickness": 7.150001525878906
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_daa9f954"
+        },
+        {
+          "glass": "Custom_4b04d3d1"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "63c312a8-b254-412c-8b13-15452d6c9774",
+      "name": "Aperture Stop",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -69.49999225139618
+        }
+      },
+      "surfaces": [
+        {
+          "id": "190fa351-355c-4184-99b2-efbc1d337933",
+          "semi_aperture": 5.0,
+          "form": {
+            "type": "sphere",
+            "radius": 0.0
+          },
+          "is_stop": true,
+          "thickness": 7.369998931884766
+        }
+      ],
+      "materials": []
+    },
+    {
+      "type": "element",
+      "id": "16f23a8b-e36a-441d-a262-fc495d445b3d",
+      "name": "6-7-8",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -62.129993319511414
+        }
+      },
+      "surfaces": [
+        {
+          "id": "2c956f89-acc7-4da8-a7c6-5bc81b1509eb",
+          "semi_aperture": 9.0,
+          "form": {
+            "type": "sphere",
+            "radius": -11.755000114440918
+          },
+          "thickness": 1.100000023841858
+        },
+        {
+          "id": "d78d9633-0f52-4bb0-98e2-117a1c40da5b",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": -35.970001220703125
+          },
+          "thickness": 4.269999980926514
+        },
+        {
+          "id": "677f02e5-67a6-4084-8d53-4bce9ee18bce",
+          "semi_aperture": 10.0,
+          "form": {
+            "type": "sphere",
+            "radius": -14.505000114440918
+          },
+          "thickness": 0.10000228881835938
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_24bada13"
+        },
+        {
+          "glass": "Custom_3cbdb8d7"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "e924c5ac-1e8d-4ee3-b754-8292df4935a9",
+      "name": "9-10",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -56.65999102592468
+        }
+      },
+      "surfaces": [
+        {
+          "id": "21ae9edc-c524-4c02-a2c0-67c2f3afefcc",
+          "semi_aperture": 12.0,
+          "form": {
+            "type": "sphere",
+            "radius": -51.70500183105469
+          },
+          "thickness": 2.549999952316284
+        },
+        {
+          "id": "1f8e3c9d-ade4-45fa-ba04-a0e6b28eee19",
+          "semi_aperture": 12.0,
+          "form": {
+            "type": "sphere",
+            "radius": -33.78499984741211
+          },
+          "thickness": 0.100006103515625
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_db59f277"
+        }
+      ]
+    },
+    {
+      "type": "element",
+      "id": "19d9d867-0dca-4e27-bd9e-c2deadd54972",
+      "name": "11-12",
+      "transform": {
+        "position": {
+          "mode": "absolute",
+          "x": 0.0,
+          "y": 0.0,
+          "z": -54.00998878479004
+        }
+      },
+      "surfaces": [
+        {
+          "id": "d12a60f2-e5d7-4170-adb8-2f6d8a67536e",
+          "semi_aperture": 14.0,
+          "form": {
+            "type": "sphere",
+            "radius": 211.14999389648438
+          },
+          "thickness": 3.0
+        },
+        {
+          "id": "49e6dbf6-8d9d-442d-b7b9-6167e4def56e",
+          "semi_aperture": 14.0,
+          "form": {
+            "type": "sphere",
+            "radius": -79.625
+          },
+          "thickness": 36.195152282714844
+        }
+      ],
+      "materials": [
+        {
+          "glass": "Custom_db56b703"
+        }
+      ]
+    }
+  ],
+  "pivots": []
+}
