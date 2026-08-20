@@ -166,7 +166,7 @@ def make_dusty_lens():
         tex[((u - cx) ** 2 + (v - cy) ** 2) < rr * rr] = 0.0
         placed += 1
     tex[(u * u + v * v) > 1.0] = 1.0
-    img = ghostlight.ApertureImage(); img.width = Npx; img.height = Npx
+    img = ghostlight.ApertureImage()
     img.semi_diameter = float(front_R); img.pixels = tex
     lens.surfaces[0].aperture_shape = ghostlight.ApertureShape.IMAGE
     lens.surfaces[0].aperture_semi_diameter = float(front_R)
